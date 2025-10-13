@@ -1,6 +1,6 @@
 import {useQuestions} from "./hooks/useQuestions.ts";
 import clsx from "clsx";
-import divider from "./assets/divider.svg";
+import Divider from "./components/Divider.tsx";
 import plumbing from "./assets/plumbing.svg";
 import electricity from "./assets/electricity.svg";
 import glazing from "./assets/glazing.svg";
@@ -41,7 +41,7 @@ function App() {
             )}
             <div className={clsx(isFirstQuestion ? "bg-landing" : "bg-background", "h-screen")}>
                 <h1 className={clsx(isFirstQuestion ? "text-6xl text-white pt-52" : "text-4xl pt-32", "font-bold text-center")}>{currentQuestion.question}</h1>
-                <img src={divider} alt="divider" className="mx-auto mt-10"/>
+                <Divider className={clsx("mx-auto mt-10", isFirstQuestion ? "text-white" : "text-primary")}/>
 
                 {isFirstQuestion ? (
                     <div className="flex justify-center items-center mt-10">
