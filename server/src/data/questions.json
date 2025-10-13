@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "question": "Mon problème concerne : ",
+    "options": [
+      { "id":  "plumbing", "label":  "Plomberie" },
+      { "id":  "electricity", "label":  "Electricité" },
+      { "id":  "heating", "label":  "Chauffage" },
+      { "id":  "locksmith", "label":  "Serrurerie" },
+      { "id":  "glazing", "label":  "Vitrerie" },
+      { "id":  "household_appliances", "label":  "Électroménager" }
+    ],
+    "next": {
+      "plumbing": 2,
+      "electricity": 3,
+      "heating": 4,
+      "locksmith": 5,
+      "glazing": 6,
+      "household_appliances": 7
+    }
+  },
+  {
+    "id": 2,
+    "question": "Où se situe votre problème ?",
+    "options": [
+      { "id":  "wc", "label":  "WC" },
+      { "id":  "sink", "label":  "Lavabo / évier" },
+      { "id":  "shower", "label":  "Douche / baignoire" },
+      { "id":  "general_building_column", "label":  "Colonne générale d'immeuble" },
+      { "id":  "piping", "label":  "Tuyauterie / canalisation" },
+      { "id":  "washing_machine", "label":  "Tuyau machine à laver / lave-vaisselle" },
+      { "id":  "boiler", "label":  "Chaudière / chauffe-eau / ballon d'eau chaude" }
+    ],
+    "next": {
+      "wc": 8,
+      "sink": 9,
+      "shower": 10,
+      "general_building_column": 11,
+      "piping": 12,
+      "washing_machine": 13,
+      "boiler": 14
+    }
+  },
+  {
+    "id": 8,
+    "question": "Quelle est la nature de votre problème ?",
+    "options": [
+      { "id":  "congestion", "label":  "Engorgement (WC bouchés)" },
+      { "id":  "leak", "label":  "Fuite (recherche de fuite)" },
+      { "id":  "operating_problem", "label": "Problème de fonctionnement (cuvette...)" },
+      { "id":  "change", "label": "Changement de WC"}
+    ],
+    "next": {
+      "congestion": 15,
+      "leak": 16,
+      "operating_problem": 17,
+      "change": 18
+    }
+  },
+  {
+    "id": 15,
+    "question": "Votre WC possède t-il un sanibroyeur ?",
+    "options": [
+      { "id":  "yes", "label":  "Oui" },
+      { "id":  "no", "label":  "Non" }
+    ],
+    "next": {
+      "yes": 19,
+      "no": 20
+    }
+  }
+]
