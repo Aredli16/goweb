@@ -1,12 +1,32 @@
 import Header from "./Header.tsx";
 import { CheckCircleIcon, CurrencyEuroIcon } from "@heroicons/react/24/outline";
-import type { Diagnostic } from "common";
+import type { Diagnostic, ISession } from "common";
+import { useState } from "react";
+import SubmissionForm from "./SubmissionForm.tsx";
+import Button from "./Button.tsx";
 
 export default function DiagnosticView({
   diagnostic,
+  submitSession,
 }: {
   diagnostic: Diagnostic;
+  submitSession: (
+    firstName: string,
+    lastName: string,
+    streetAddress: string,
+    postalCode: string,
+    phoneNumber: string,
+    email: string,
+    paymentMethod: string,
+  ) => Promise<ISession | void>;
 }) {
+  const [showForm, setShowForm] = useState(false);
+
+  if (showForm)
+    return (
+      <SubmissionForm diagnostic={diagnostic} submitSession={submitSession} />
+    );
+
   return (
     <>
       <Header />
@@ -44,9 +64,9 @@ export default function DiagnosticView({
                 ))}
               </ul>
 
-              <button className="mt-5 bg-primary text-white py-5 px-7 rounded-full font-semibold cursor-pointer">
+              <Button onClick={() => setShowForm(true)}>
                 Demander une intervention
-              </button>
+              </Button>
             </div>
 
             <div className="text-xs mt-10 text-gray-700">

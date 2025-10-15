@@ -2,7 +2,7 @@ import path from "node:path";
 import * as fs from "node:fs";
 import { Quiz, StepResponse } from "common";
 
-function loadQuiz(): Quiz {
+export function loadQuiz(): Quiz {
   const filePath = path.join(__dirname, "../data/questions.json");
   const data = fs.readFileSync(filePath, "utf-8");
   return JSON.parse(data);

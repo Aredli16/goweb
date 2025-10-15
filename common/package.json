@@ -8,6 +8,10 @@
     "build": "tsc"
   },
   "devDependencies": {
+    "@types/node": "^24.7.2",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "mongoose": "^8.19.1"
   }
 }

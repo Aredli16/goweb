@@ -1,15 +1,5 @@
-import mongoose, { Document, model, Model, Schema } from "mongoose";
-
-export interface IResponse {
-  questionId: number;
-  answerId: string;
-}
-
-export interface ISession extends Document {
-  createdAt: Date;
-  responses: IResponse[];
-  isSubmitted: boolean;
-}
+import mongoose, { model, Model, Schema } from "mongoose";
+import { IResponse, ISession } from "common";
 
 const ResponseSchema: Schema<IResponse> = new Schema({
   questionId: { type: Number, required: true },

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { Diagnostic, Question, StepResponse } from "common";
+import type { Diagnostic, ISession, Question, StepResponse } from "common";
 
 export function useQuestions() {
   const [sessionId, setSessionId] = useState<string | null>(null);
@@ -71,6 +71,36 @@ export function useQuestions() {
     setLoading(false);
   };
 
+  const submitSession = async (
+    firstName: string,
+    lastName: string,
+    streetAddress: string,
+    postalCode: string,
+    phoneNumber: string,
+    email: string,
+    paymentMethod: string,
+  ): Promise<ISession | void> => {
+    if (!sessionId) return;
+    const res = await fetch(
+      `http://localhost:3000/api/sessions/${sessionId}/submit`,
+      {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          streetAddress,
+          postalCode,
+          phoneNumber,
+          email,
+          paymentMethod,
+        }),
+      },
+    );
+
+    return await res.json();
+  };
+
   return {
     currentQuestion,
     diagnostic,
@@ -78,5 +108,6 @@ export function useQuestions() {
     error,
     goNext,
     goPrev,
+    submitSession,
   };
 }

@@ -6,14 +6,24 @@ import DiagnosticView from "./components/DiagnosticView.tsx";
 import QuestionView from "./components/QuestionView.tsx";
 
 function App() {
-  const { currentQuestion, diagnostic, loading, error, goNext, goPrev } =
-    useQuestions();
+  const {
+    currentQuestion,
+    diagnostic,
+    loading,
+    error,
+    goNext,
+    goPrev,
+    submitSession,
+  } = useQuestions();
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   // Cas 1 : Diagnostic final
-  if (diagnostic) return <DiagnosticView diagnostic={diagnostic} />;
+  if (diagnostic)
+    return (
+      <DiagnosticView diagnostic={diagnostic} submitSession={submitSession} />
+    );
 
   // Cas 2 : Affichage des questions
   const isFirstQuestion = currentQuestion?.id === 1;

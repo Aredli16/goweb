@@ -7,3 +7,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+  mail:
+    image: mailhog/mailhog
+    restart: always
+    ports:
+      - 8025:8025
+      - 1025:1025

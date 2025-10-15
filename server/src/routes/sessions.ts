@@ -3,6 +3,7 @@ import {
   addResponseAndGetNextQuestion,
   createSession,
   goPrevious,
+  submitSession,
 } from "../services/sessionService";
 
 const router = Router();
@@ -42,6 +43,35 @@ router.post("/:sessionId/previous", async (req, res) => {
       .json({ error: "Session or previous question not found" });
 
   res.json(previous);
+});
+
+// Envoi de la session à l'artisan : l'artisan recevra un email avec les détails du problème ainsi que les informations de contact et de paiement du client
+router.post("/:sessionId/submit", async (req, res) => {
+  const { sessionId } = req.params;
+  const {
+    firstName,
+    lastName,
+    streetAddress,
+    postalCode,
+    phoneNumber,
+    email,
+    paymentMethod,
+  } = req.body;
+
+  const session = await submitSession(
+    sessionId,
+    firstName,
+    lastName,
+    streetAddress,
+    postalCode,
+    phoneNumber,
+    email,
+    paymentMethod,
+  );
+
+  if (!session) return res.status(404).json({ error: "Session not found" });
+
+  res.json(session);
 });
 
 export default router;
