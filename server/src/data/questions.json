@@ -2,10 +2,10 @@
   "questions": [
     {
       "id": 1,
-      "question": "Mon problème concerne : ",
+      "question": "Mon problème concerne :",
       "options": [
         { "id": "plumbing", "label": "Plomberie" },
-        { "id": "electricity", "label": "Electricité" },
+        { "id": "electricity", "label": "Électricité" },
         { "id": "heating", "label": "Chauffage" },
         { "id": "locksmith", "label": "Serrurerie" },
         { "id": "glazing", "label": "Vitrerie" },
@@ -13,88 +13,1723 @@
       ],
       "next": {
         "plumbing": 2,
-        "electricity": 3,
-        "heating": 4,
-        "locksmith": 5,
-        "glazing": 6,
-        "household_appliances": 7
+        "electricity": 100,
+        "heating": 200,
+        "locksmith": 300,
+        "glazing": 400,
+        "household_appliances": 500
       }
     },
     {
       "id": 2,
-      "question": "Où se situe votre problème ?",
+      "question": "Où se situe votre problème de plomberie ?",
       "options": [
-        { "id": "wc", "label": "WC" },
+        { "id": "wc", "label": "WC / toilettes" },
         { "id": "sink", "label": "Lavabo / évier" },
         { "id": "shower", "label": "Douche / baignoire" },
-        {
-          "id": "general_building_column",
-          "label": "Colonne générale d'immeuble"
-        },
-        { "id": "piping", "label": "Tuyauterie / canalisation" },
-        {
-          "id": "washing_machine",
-          "label": "Tuyau machine à laver / lave-vaisselle"
-        },
-        {
-          "id": "boiler",
-          "label": "Chaudière / chauffe-eau / ballon d'eau chaude"
-        }
+        { "id": "pipe", "label": "Canalisation / tuyauterie" },
+        { "id": "boiler", "label": "Chauffe-eau / ballon" },
+        { "id": "outdoor", "label": "Extérieur (compteur / regard)" }
       ],
       "next": {
-        "wc": 8,
-        "sink": 9,
-        "shower": 10,
-        "general_building_column": 11,
-        "piping": 12,
-        "washing_machine": 13,
-        "boiler": 14
+        "wc": 3,
+        "sink": 6,
+        "shower": 9,
+        "pipe": 12,
+        "boiler": 15,
+        "outdoor": 18
+      }
+    },
+    {
+      "id": 3,
+      "question": "Quel est le symptôme principal pour vos WC ?",
+      "options": [
+        { "id": "clogged", "label": "WC bouché / engorgé" },
+        { "id": "leak", "label": "Fuite (base, réservoir, raccord)" },
+        { "id": "odour", "label": "Mauvaises odeurs persistantes" },
+        { "id": "noise", "label": "Sifflement / bruit anormal" },
+        { "id": "flush_problem", "label": "Chasse d'eau qui ne fonctionne pas" }
+      ],
+      "next": {
+        "clogged": 4,
+        "leak": 5,
+        "odour": 5,
+        "noise": 5,
+        "flush_problem": 5
+      }
+    },
+    {
+      "id": 4,
+      "question": "Si WC bouché : type de blocage constaté ?",
+      "options": [
+        { "id": "complete", "label": "Impossibilité totale d'écoulement" },
+        { "id": "slow", "label": "Écoulement très lent" },
+        { "id": "intermittent", "label": "Parfois débouche, parfois non" },
+        { "id": "overflow", "label": "Débordement / remontée d'eau" }
+      ],
+      "next": {
+        "complete": 7,
+        "slow": 7,
+        "intermittent": 7,
+        "overflow": 7
+      }
+    },
+    {
+      "id": 5,
+      "question": "Pour la fuite / problème observé : où se situe-t-elle exactement ?",
+      "options": [
+        { "id": "base", "label": "À la base de la cuvette (sol)" },
+        { "id": "tank", "label": "Réservoir / chasse" },
+        { "id": "riser", "label": "Raccord ou bride" },
+        { "id": "unknown", "label": "Je ne sais pas" }
+      ],
+      "next": {
+        "base": 7,
+        "tank": 7,
+        "riser": 7,
+        "unknown": 7
+      }
+    },
+    {
+      "id": 6,
+      "question": "Évier / lavabo — quel symptôme ?",
+      "options": [
+        { "id": "leak_under", "label": "Fuite sous l’évier / siphon" },
+        { "id": "tap", "label": "Robinet qui fuit / goutte" },
+        { "id": "slow_drain", "label": "Écoulement lent" },
+        { "id": "no_hot", "label": "Plus d'eau chaude" }
+      ],
+      "next": {
+        "leak_under": 7,
+        "tap": 7,
+        "slow_drain": 8,
+        "no_hot": 15
+      }
+    },
+    {
+      "id": 7,
+      "question": "Âge approximatif de l'installation / équipement concerné ?",
+      "options": [
+        { "id": "less_2", "label": "Moins de 2 ans" },
+        { "id": "2_10", "label": "2 à 10 ans" },
+        { "id": "10_25", "label": "10 à 25 ans" },
+        { "id": "more_25", "label": "Plus de 25 ans / inconnu" }
+      ],
+      "next": {
+        "less_2": 8,
+        "2_10": 8,
+        "10_25": 8,
+        "more_25": 8
       }
     },
     {
       "id": 8,
-      "question": "Quelle est la nature de votre problème ?",
+      "question": "Le problème est-il :",
       "options": [
-        { "id": "congestion", "label": "Engorgement (WC bouchés)" },
-        { "id": "leak", "label": "Fuite (recherche de fuite)" },
-        {
-          "id": "operating_problem",
-          "label": "Problème de fonctionnement (cuvette...)"
-        },
-        { "id": "change", "label": "Changement de WC" }
+        { "id": "urgent", "label": "Urgent (inondation / débordement)" },
+        { "id": "needs_visit", "label": "Nécessite une intervention pro" },
+        { "id": "cosmetic", "label": "Gênant mais non urgent" }
       ],
       "next": {
-        "congestion": 15,
-        "leak": 16,
-        "operating_problem": 17,
-        "change": 18
+        "urgent": "D1",
+        "needs_visit": "D2",
+        "cosmetic": "D3"
+      }
+    },
+    {
+      "id": 9,
+      "question": "Douche / baignoire : quel symptôme principal ?",
+      "options": [
+        { "id": "no_drain", "label": "Bouchon complet / inondation" },
+        { "id": "slow_drain", "label": "Écoulement lent" },
+        { "id": "leak", "label": "Fuite visible (jonction, bac, mitigeur)" },
+        { "id": "shower_head", "label": "Pommeau / pression faible" }
+      ],
+      "next": {
+        "no_drain": 11,
+        "slow_drain": 11,
+        "leak": 10,
+        "shower_head": 10
+      }
+    },
+    {
+      "id": 10,
+      "question": "Y a-t-il des traces d'humidité / moisissure autour de la zone ?",
+      "options": [
+        { "id": "yes", "label": "Oui (murs / joints / sol)" },
+        { "id": "no", "label": "Non" },
+        { "id": "not_sure", "label": "Je ne suis pas sûr(e)" }
+      ],
+      "next": {
+        "yes": 11,
+        "no": 11,
+        "not_sure": 11
+      }
+    },
+    {
+      "id": 11,
+      "question": "Le problème intervient-il après un événement particulier ?",
+      "options": [
+        { "id": "after_rain", "label": "Après de fortes pluies" },
+        { "id": "after_install", "label": "Après travaux / installation" },
+        { "id": "sudden", "label": "Apparition soudaine" },
+        { "id": "gradual", "label": "Apparition progressive" }
+      ],
+      "next": {
+        "after_rain": 8,
+        "after_install": 8,
+        "sudden": 8,
+        "gradual": 8
+      }
+    },
+    {
+      "id": 12,
+      "question": "Canalisation / tuyauterie : localisez-vous la fuite ou le bouchon ?",
+      "options": [
+        { "id": "in_wall", "label": "Dans le mur" },
+        { "id": "under_floor", "label": "Sous plancher / dalle" },
+        { "id": "visible_pipe", "label": "Sur tuyau apparent" },
+        { "id": "drain_field", "label": "Réseau d'évacuation / tout-à-l'égout" }
+      ],
+      "next": {
+        "in_wall": 13,
+        "under_floor": 13,
+        "visible_pipe": 13,
+        "drain_field": 13
+      }
+    },
+    {
+      "id": 13,
+      "question": "Avez-vous constaté :",
+      "options": [
+        { "id": "water_on_floor", "label": "Eau sur sol / flaque" },
+        { "id": "drop_in_pressure", "label": "Baisse de pression générale" },
+        { "id": "no_water", "label": "Plus d'eau à un robinet" },
+        { "id": "bad_smell", "label": "Mauvaises odeurs dans évacuation" }
+      ],
+      "next": {
+        "water_on_floor": 8,
+        "drop_in_pressure": 8,
+        "no_water": 8,
+        "bad_smell": 8
+      }
+    },
+    {
+      "id": 14,
+      "question": "Souhaitez-vous que le technicien apporte des pièces (robinets, joints, clapets) si nécessaire ?",
+      "options": [
+        { "id": "yes", "label": "Oui, en cas de nécessité" },
+        { "id": "no", "label": "Non, je fournirai" },
+        { "id": "unknown", "label": "Je ne sais pas" }
+      ],
+      "next": {
+        "yes": 8,
+        "no": 8,
+        "unknown": 8
       }
     },
     {
       "id": 15,
-      "question": "Votre WC possède t-il un sanibroyeur ?",
+      "question": "Chauffe-eau / ballon — symptôme principal ?",
       "options": [
-        { "id": "yes", "label": "Oui" },
+        { "id": "no_hot", "label": "Pas d'eau chaude" },
+        { "id": "leak", "label": "Fuite sur chauffe-eau" },
+        { "id": "noise", "label": "Bruits (claquement / tartre)" },
+        { "id": "temp_fluct", "label": "Variations de température" }
+      ],
+      "next": {
+        "no_hot": 16,
+        "leak": 16,
+        "noise": 16,
+        "temp_fluct": 16
+      }
+    },
+    {
+      "id": 16,
+      "question": "Type de chauffe-eau / énergie ?",
+      "options": [
+        { "id": "electric", "label": "Électrique" },
+        { "id": "gas", "label": "Gaz" },
+        { "id": "solar", "label": "Thermique solaire" },
+        { "id": "other", "label": "Autre / inconnu" }
+      ],
+      "next": {
+        "electric": 17,
+        "gas": 17,
+        "solar": 17,
+        "other": 17
+      }
+    },
+    {
+      "id": 17,
+      "question": "Dernière action effectuée sur l'appareil ?",
+      "options": [
+        { "id": "no_action", "label": "Aucune" },
+        { "id": "maintenance", "label": "Maintenance récente" },
+        { "id": "repair", "label": "Réparation récente" },
+        { "id": "installation", "label": "Installation récente" }
+      ],
+      "next": {
+        "no_action": 8,
+        "maintenance": 8,
+        "repair": 8,
+        "installation": 8
+      }
+    },
+    {
+      "id": 18,
+      "question": "Problème extérieur : concerne-t-il le compteur ou une conduite visible ?",
+      "options": [
+        { "id": "meter", "label": "Compteur / vanne d'arrêt" },
+        { "id": "garden_pipe", "label": "Réseau extérieur / arrosage" },
+        { "id": "sewer", "label": "Regard / tout-à-l'égout" }
+      ],
+      "next": {
+        "meter": 8,
+        "garden_pipe": 13,
+        "sewer": 13
+      }
+    },
+    {
+      "id": 100,
+      "question": "Quel est le type de problème électrique ?",
+      "options": [
+        { "id": "no_power", "label": "Coupure de courant (partielle ou totale)" },
+        { "id": "short", "label": "Court-circuit / disjonction" },
+        { "id": "socket", "label": "Prise / interrupteur défectueux" },
+        { "id": "lighting", "label": "Éclairage / luminaires" },
+        { "id": "safety", "label": "Odeur de brûlé / échauffement" }
+      ],
+      "next": {
+        "no_power": 101,
+        "short": 102,
+        "socket": 104,
+        "lighting": 107,
+        "safety": 110
+      }
+    },
+    {
+      "id": 101,
+      "question": "Coupure : affecte-t-elle toute l'habitation ou une zone ?",
+      "options": [
+        { "id": "whole", "label": "Toute la maison / appartement" },
+        { "id": "zone", "label": "Une pièce / zone" },
+        { "id": "outlet", "label": "Une prise spécifique" }
+      ],
+      "next": {
+        "whole": 103,
+        "zone": 103,
+        "outlet": 104
+      }
+    },
+    {
+      "id": 102,
+      "question": "Court-circuit : avez-vous des déclenchements répétés du disjoncteur ?",
+      "options": [
+        { "id": "yes", "label": "Oui (répété)" },
+        { "id": "no", "label": "Non, c'était ponctuel" },
+        { "id": "sparks", "label": "Étincelles ou odeur de brûlé" }
+      ],
+      "next": {
+        "yes": 103,
+        "no": 103,
+        "sparks": 110
+      }
+    },
+    {
+      "id": 103,
+      "question": "Le tableau électrique a-t-il été modifié récemment ?",
+      "options": [
+        { "id": "yes", "label": "Oui (travaux / ajout)" },
+        { "id": "no", "label": "Non" },
+        { "id": "dont_know", "label": "Je ne sais pas" }
+      ],
+      "next": {
+        "yes": 106,
+        "no": 106,
+        "dont_know": 106
+      }
+    },
+    {
+      "id": 104,
+      "question": "Problème sur prise/interrupteur : symptôme exact ?",
+      "options": [
+        { "id": "loose", "label": "Prise/interrupteur qui bouge" },
+        { "id": "no_contact", "label": "Pas de contact / pas d'alimentation" },
+        { "id": "spark", "label": "Étincelles / échauffement" },
+        { "id": "socket_smell", "label": "Odeur de brûlé" }
+      ],
+      "next": {
+        "loose": 106,
+        "no_contact": 106,
+        "spark": 110,
+        "socket_smell": 110
+      }
+    },
+    {
+      "id": 106,
+      "question": "Avez-vous un accès au tableau et aux câbles (sécurité / compétence) ?",
+      "options": [
+        { "id": "yes", "label": "Oui, accès et je peux couper" },
+        { "id": "no", "label": "Non, accès difficile / interdit" },
+        { "id": "prefer_pro", "label": "Je préfère qu'un pro intervienne" }
+      ],
+      "next": {
+        "yes": 107,
+        "no": 107,
+        "prefer_pro": 107
+      }
+    },
+    {
+      "id": 107,
+      "question": "Éclairage : quel symptôme ?",
+      "options": [
+        { "id": "flicker", "label": "Clignotement intermittent" },
+        { "id": "no_light", "label": "Plus aucune lumière" },
+        { "id": "bulb_burn", "label": "Ampoule qui grille souvent" },
+        { "id": "fixture_heat", "label": "Luminaire qui chauffe" }
+      ],
+      "next": {
+        "flicker": 108,
+        "no_light": 108,
+        "bulb_burn": 108,
+        "fixture_heat": 110
+      }
+    },
+    {
+      "id": 108,
+      "question": "Le problème survient-il lors de l'utilisation d'un appareil spécifique ?",
+      "options": [
+        { "id": "yes", "label": "Oui (par ex. machine à laver, four)" },
+        { "id": "no", "label": "Non" },
+        { "id": "sometimes", "label": "Parfois" }
+      ],
+      "next": {
+        "yes": 109,
+        "no": 109,
+        "sometimes": 109
+      }
+    },
+    {
+      "id": 109,
+      "question": "Quel(s) appareil(s) déclenche(nt) le symptôme ? (choix multiple si pertinent)",
+      "options": [
+        { "id": "washing_machine", "label": "Machine à laver" },
+        { "id": "oven", "label": "Four / plaque" },
+        { "id": "fridge", "label": "Réfrigérateur / congélateur" },
+        { "id": "hvac", "label": "Climatisation / pompe à chaleur" }
+      ],
+      "next": {
+        "washing_machine": "D20",
+        "oven": "D21",
+        "fridge": "D22",
+        "hvac": "D23"
+      }
+    },
+    {
+      "id": 110,
+      "question": "Y a-t-il une odeur de brûlé, fumée ou signe d’incendie ?",
+      "options": [
+        { "id": "smoke", "label": "Oui, fumée ou odeur forte" },
+        { "id": "heat", "label": "Échauffement localisé" },
         { "id": "no", "label": "Non" }
       ],
       "next": {
-        "yes": 19,
-        "no": "D1"
+        "smoke": "D24",
+        "heat": "D25",
+        "no": 111
+      }
+    },
+    {
+      "id": 111,
+      "question": "Souhaitez-vous que l'intervention soit :",
+      "options": [
+        { "id": "urgent", "label": "Intervention urgente (sûreté)" },
+        { "id": "normal", "label": "Intervention standard" },
+        { "id": "diagnostic_only", "label": "Juste un diagnostic / devis" }
+      ],
+      "next": {
+        "urgent": "D26",
+        "normal": "D27",
+        "diagnostic_only": "D28"
+      }
+    },
+    {
+      "id": 200,
+      "question": "Quel équipement de chauffage concerne le problème ?",
+      "options": [
+        { "id": "boiler", "label": "Chaudière" },
+        { "id": "radiator", "label": "Radiateur" },
+        { "id": "thermostat", "label": "Thermostat / régulation" },
+        { "id": "floor", "label": "Plancher chauffant" }
+      ],
+      "next": {
+        "boiler": 201,
+        "radiator": 205,
+        "thermostat": 210,
+        "floor": 213
+      }
+    },
+    {
+      "id": 201,
+      "question": "Chaudière : quel symptôme ?",
+      "options": [
+        { "id": "no_heat", "label": "Pas de chauffage / pas d'eau chaude" },
+        { "id": "leak", "label": "Fuite" },
+        { "id": "noise", "label": "Bruits anormaux" },
+        { "id": "error_code", "label": "Code erreur affiché" }
+      ],
+      "next": {
+        "no_heat": 202,
+        "leak": 203,
+        "noise": 203,
+        "error_code": 204
+      }
+    },
+    {
+      "id": 202,
+      "question": "La chaudière est :",
+      "options": [
+        { "id": "gas", "label": "Gaz" },
+        { "id": "electric", "label": "Électrique" },
+        { "id": "oil", "label": "Fioul" },
+        { "id": "other", "label": "Autre / inconnu" }
+      ],
+      "next": {
+        "gas": 204,
+        "electric": 204,
+        "oil": 204,
+        "other": 204
+      }
+    },
+    {
+      "id": 203,
+      "question": "Fuite / bruit : concerne-t-elle circuit de chauffage ou ballon ?",
+      "options": [
+        { "id": "circuit", "label": "Circuit chauffage (radiateurs)" },
+        { "id": "ballon", "label": "Ballon / chauffe-eau" },
+        { "id": "both", "label": "Les deux / je ne sais pas" }
+      ],
+      "next": {
+        "circuit": 204,
+        "ballon": 204,
+        "both": 204
+      }
+    },
+    {
+      "id": 204,
+      "question": "Y a-t-il un code erreur affiché ou témoin clignotant ?",
+      "options": [
+        { "id": "yes", "label": "Oui (entrer le code si possible)" },
+        { "id": "no", "label": "Non" },
+        { "id": "dont_know", "label": "Je ne sais pas / je n'ai pas regardé" }
+      ],
+      "next": {
+        "yes": 205,
+        "no": 206,
+        "dont_know": 206
+      }
+    },
+    {
+      "id": 205,
+      "question": "Radiateur : quel symptôme ?",
+      "options": [
+        { "id": "cold_top", "label": "Froid en haut, chaud en bas" },
+        { "id": "cold_bottom", "label": "Froid en bas, chaud en haut" },
+        { "id": "no_heat", "label": "Froid partout" },
+        { "id": "leak", "label": "Fuite sur radiateur" }
+      ],
+      "next": {
+        "cold_top": 206,
+        "cold_bottom": 206,
+        "no_heat": 206,
+        "leak": 206
+      }
+    },
+    {
+      "id": 206,
+      "question": "S'agit-il d'un problème récurrent ou récent ?",
+      "options": [
+        { "id": "recent", "label": "Apparu récemment" },
+        { "id": "recurring", "label": "Récurrent / depuis longtemps" },
+        { "id": "after_maintenance", "label": "Après maintenance / purge" }
+      ],
+      "next": {
+        "recent": 207,
+        "recurring": 207,
+        "after_maintenance": 207
+      }
+    },
+    {
+      "id": 207,
+      "question": "Souhaitez-vous priorité d'intervention ?",
+      "options": [
+        { "id": "emergency", "label": "Oui, urgence (pas de chauffage en hiver)" },
+        { "id": "standard", "label": "Intervention standard" },
+        { "id": "quote", "label": "Diagnostic / devis seulement" }
+      ],
+      "next": {
+        "emergency": "D40",
+        "standard": "D41",
+        "quote": "D42"
+      }
+    },
+    {
+      "id": 210,
+      "question": "Thermostat / régulation : quel symptôme ?",
+      "options": [
+        { "id": "no_response", "label": "Ne répond pas / pas de réglage" },
+        { "id": "wrong_temp", "label": "Température affichée incorrecte" },
+        { "id": "program_issue", "label": "Programmation défaillante" }
+      ],
+      "next": {
+        "no_response": 207,
+        "wrong_temp": 207,
+        "program_issue": 207
+      }
+    },
+    {
+      "id": 213,
+      "question": "Plancher chauffant : problème de zone ou généralisé ?",
+      "options": [
+        { "id": "single_zone", "label": "Une zone seulement" },
+        { "id": "whole_floor", "label": "Toute la zone / étage" },
+        { "id": "pipe_leak", "label": "Signe de fuite (humidité sol)" }
+      ],
+      "next": {
+        "single_zone": 207,
+        "whole_floor": 207,
+        "pipe_leak": 207
+      }
+    },
+    {
+      "id": 300,
+      "question": "Quel est votre problème de serrurerie ?",
+      "options": [
+        { "id": "door_lock", "label": "Porte claquée / verrouillée" },
+        { "id": "cylinder", "label": "Cylindre / clé cassée" },
+        { "id": "hinge", "label": "Gond / charnière défectueuse" },
+        { "id": "safe", "label": "Coffre / serrure haute sécurité" }
+      ],
+      "next": {
+        "door_lock": 301,
+        "cylinder": 304,
+        "hinge": 307,
+        "safe": 310
+      }
+    },
+    {
+      "id": 301,
+      "question": "La porte est-elle simplement claquée ou fermée à clé ?",
+      "options": [
+        { "id": "slammed", "label": "Claquée (mais non verrouillée)" },
+        { "id": "locked", "label": "Fermée à clé (clé manquante)" },
+        { "id": "broken", "label": "Dégâts / porte endommagée" }
+      ],
+      "next": {
+        "slammed": 302,
+        "locked": 303,
+        "broken": 303
+      }
+    },
+    {
+      "id": 302,
+      "question": "Souhaitez-vous une ouverture sans casse si possible ?",
+      "options": [
+        { "id": "yes", "label": "Oui, sans casse" },
+        { "id": "no", "label": "Peu importe / urgence" },
+        { "id": "not_sure", "label": "Je ne sais pas" }
+      ],
+      "next": {
+        "yes": "D60",
+        "no": "D61",
+        "not_sure": "D62"
+      }
+    },
+    {
+      "id": 303,
+      "question": "Avez-vous une assurance / intervention assurance (dépannage serrurerie) ?",
+      "options": [
+        { "id": "yes", "label": "Oui" },
+        { "id": "no", "label": "Non" },
+        { "id": "unknown", "label": "Je ne sais pas" }
+      ],
+      "next": {
+        "yes": "D63",
+        "no": "D64",
+        "unknown": "D64"
+      }
+    },
+    {
+      "id": 304,
+      "question": "Clé cassée / cylindre : la clé est-elle bloquée dans la serrure ?",
+      "options": [
+        { "id": "stuck", "label": "Oui, bloquée" },
+        { "id": "lost", "label": "Perdue (accès impossible)" },
+        { "id": "multiple", "label": "Plusieurs clés problématiques" }
+      ],
+      "next": {
+        "stuck": 305,
+        "lost": 305,
+        "multiple": 306
+      }
+    },
+    {
+      "id": 305,
+      "question": "Souhaitez-vous changement de cylindre / reproduction de clé ?",
+      "options": [
+        { "id": "change", "label": "Changer le cylindre" },
+        { "id": "extract", "label": "Extraction + réparation" },
+        { "id": "copy", "label": "Faire une reproduction après ouverture" }
+      ],
+      "next": {
+        "change": "D65",
+        "extract": "D66",
+        "copy": "D67"
+      }
+    },
+    {
+      "id": 306,
+      "question": "Type de porte / serrure ?",
+      "options": [
+        { "id": "wood", "label": "Porte bois classique" },
+        { "id": "metal", "label": "Porte métallique / blindée" },
+        { "id": "upvc", "label": "Porte PVC / aluminium" }
+      ],
+      "next": {
+        "wood": "D68",
+        "metal": "D69",
+        "upvc": "D70"
+      }
+    },
+    {
+      "id": 307,
+      "question": "Charnières / gonds : la porte grince ou se décroche ?",
+      "options": [
+        { "id": "squeak", "label": "Grincement / alignement" },
+        { "id": "loose", "label": "Desserrement / vis manquantes" },
+        { "id": "off", "label": "Porte partiellement décrochée" }
+      ],
+      "next": {
+        "squeak": "D71",
+        "loose": "D71",
+        "off": "D72"
+      }
+    },
+    {
+      "id": 400,
+      "question": "Quel est votre problème en vitrerie / menuiserie ?",
+      "options": [
+        { "id": "broken_glass", "label": "Vitre cassée / fendue" },
+        { "id": "window_stuck", "label": "Fenêtre coincée" },
+        { "id": "seal", "label": "Joint d'étanchéité dégradé" },
+        { "id": "condensation", "label": "Condensation entre les vitrages" }
+      ],
+      "next": {
+        "broken_glass": 401,
+        "window_stuck": 404,
+        "seal": 407,
+        "condensation": 410
+      }
+    },
+    {
+      "id": 401,
+      "question": "Vitre cassée : type de vitrage ?",
+      "options": [
+        { "id": "single", "label": "Simple vitrage" },
+        { "id": "double", "label": "Double vitrage (isolation)" },
+        { "id": "tempered", "label": "Feuilleté / trempé (sécurité)" }
+      ],
+      "next": {
+        "single": 402,
+        "double": 402,
+        "tempered": 403
+      }
+    },
+    {
+      "id": 402,
+      "question": "La vitre est-elle accessible depuis l'intérieur (sécurité) ?",
+      "options": [
+        { "id": "inside", "label": "Accessible depuis l'intérieur" },
+        { "id": "outside", "label": "Accessible seulement depuis l'extérieur" },
+        { "id": "high", "label": "Hauteur / accès difficile" }
+      ],
+      "next": {
+        "inside": 403,
+        "outside": 403,
+        "high": 403
+      }
+    },
+    {
+      "id": 403,
+      "question": "Souhaitez-vous remplacement à l'identique ou upgrade (double vitrage) ?",
+      "options": [
+        { "id": "same", "label": "Remplacement identique" },
+        { "id": "upgrade", "label": "Amélioration (isolation / sécurité)" },
+        { "id": "temp", "label": "Solution temporaire (film, planche)" }
+      ],
+      "next": {
+        "same": "D80",
+        "upgrade": "D81",
+        "temp": "D82"
+      }
+    },
+    {
+      "id": 404,
+      "question": "Fenêtre coincée : symptôme exact ?",
+      "options": [
+        { "id": "not_close", "label": "Ne ferme plus" },
+        { "id": "not_open", "label": "Ne s'ouvre plus" },
+        { "id": "block", "label": "Blocage aléatoire" }
+      ],
+      "next": {
+        "not_close": 405,
+        "not_open": 405,
+        "block": 406
+      }
+    },
+    {
+      "id": 405,
+      "question": "Type de menuiserie ?",
+      "options": [
+        { "id": "wood", "label": "Bois" },
+        { "id": "aluminium", "label": "Aluminium" },
+        { "id": "upvc", "label": "PVC" }
+      ],
+      "next": {
+        "wood": "D83",
+        "aluminium": "D84",
+        "upvc": "D85"
+      }
+    },
+    {
+      "id": 406,
+      "question": "Y a-t-il déformation due aux intempéries ou charpente ?",
+      "options": [
+        { "id": "yes", "label": "Oui (fentes / gonflement)" },
+        { "id": "no", "label": "Non" },
+        { "id": "dont_know", "label": "Je ne sais pas" }
+      ],
+      "next": {
+        "yes": "D86",
+        "no": "D87",
+        "dont_know": "D87"
+      }
+    },
+    {
+      "id": 407,
+      "question": "Joint d'étanchéité : symptôme ?",
+      "options": [
+        { "id": "air_leak", "label": "Courants d'air" },
+        { "id": "water_in", "label": "Entrée d'eau pluie" },
+        { "id": "worn", "label": "Joint usé / cassé" }
+      ],
+      "next": {
+        "air_leak": "D88",
+        "water_in": "D89",
+        "worn": "D90"
+      }
+    },
+    {
+      "id": 410,
+      "question": "Condensation entre vitrages (double vitrage) : depuis quand ?",
+      "options": [
+        { "id": "recent", "label": "Récemment" },
+        { "id": "long_time", "label": "Depuis longtemps" },
+        { "id": "after_work", "label": "Après travaux ou choc" }
+      ],
+      "next": {
+        "recent": "D91",
+        "long_time": "D91",
+        "after_work": "D92"
+      }
+    },
+    {
+      "id": 500,
+      "question": "Quel appareil est concerné ?",
+      "options": [
+        { "id": "washing_machine", "label": "Machine à laver" },
+        { "id": "dishwasher", "label": "Lave-vaisselle" },
+        { "id": "fridge", "label": "Réfrigérateur / congélateur" },
+        { "id": "oven", "label": "Four / plaque" },
+        { "id": "dryer", "label": "Sèche-linge" },
+        { "id": "hob", "label": "Hotte / plaque de cuisson" }
+      ],
+      "next": {
+        "washing_machine": 501,
+        "dishwasher": 505,
+        "fridge": 509,
+        "oven": 513,
+        "dryer": 517,
+        "hob": 517
+      }
+    },
+    {
+      "id": 501,
+      "question": "Machine à laver : quel est le symptôme principal ?",
+      "options": [
+        { "id": "no_start", "label": "Ne démarre pas" },
+        { "id": "not_spin", "label": "Ne centrifuge pas" },
+        { "id": "leak", "label": "Fuite d'eau" },
+        { "id": "noise", "label": "Bruits anormaux / vibrations" }
+      ],
+      "next": {
+        "no_start": 502,
+        "not_spin": 502,
+        "leak": 503,
+        "noise": 502
+      }
+    },
+    {
+      "id": 502,
+      "question": "L'appareil affiche-t-il un code erreur ?",
+      "options": [
+        { "id": "yes", "label": "Oui (indiquer si possible)" },
+        { "id": "no", "label": "Non" },
+        { "id": "dont_know", "label": "Je ne sais pas" }
+      ],
+      "next": {
+        "yes": "D100",
+        "no": "D101",
+        "dont_know": "D101"
+      }
+    },
+    {
+      "id": 503,
+      "question": "Fuite machine : d'où provient-elle ?",
+      "options": [
+        { "id": "door", "label": "Joint de porte / hublot" },
+        { "id": "under", "label": "Sous la machine (pompe / durite)" },
+        { "id": "inlet", "label": "Alimentation eau" }
+      ],
+      "next": {
+        "door": "D102",
+        "under": "D103",
+        "inlet": "D104"
+      }
+    },
+    {
+      "id": 505,
+      "question": "Lave-vaisselle : symptôme principal ?",
+      "options": [
+        { "id": "not_drain", "label": "Ne vidange pas" },
+        { "id": "no_wash", "label": "Ne lave pas correctement" },
+        { "id": "leak", "label": "Fuite" }
+      ],
+      "next": {
+        "not_drain": 506,
+        "no_wash": 506,
+        "leak": 507
+      }
+    },
+    {
+      "id": 506,
+      "question": "Avez-vous vérifié les filtres / bras d'aspersion ?",
+      "options": [
+        { "id": "yes", "label": "Oui, propre" },
+        { "id": "no", "label": "Non" },
+        { "id": "partly", "label": "Partiellement" }
+      ],
+      "next": {
+        "yes": "D105",
+        "no": "D106",
+        "partly": "D106"
+      }
+    },
+    {
+      "id": 509,
+      "question": "Réfrigérateur / congélateur : symptôme ?",
+      "options": [
+        { "id": "no_cool", "label": "Ne refroidit plus" },
+        { "id": "excess_ice", "label": "Givre excessif / dégivrage" },
+        { "id": "leak", "label": "Fuite d'eau (condensation / bac)" }
+      ],
+      "next": {
+        "no_cool": "D107",
+        "excess_ice": "D108",
+        "leak": "D109"
+      }
+    },
+    {
+      "id": 513,
+      "question": "Four / plaque : symptôme ?",
+      "options": [
+        { "id": "not_heat", "label": "Ne chauffe pas" },
+        { "id": "uneven", "label": "Cuisson inégale" },
+        { "id": "error", "label": "Code erreur / affichage" }
+      ],
+      "next": {
+        "not_heat": "D110",
+        "uneven": "D111",
+        "error": "D110"
+      }
+    },
+    {
+      "id": 517,
+      "question": "Sèche-linge / hotte / plaque : décrivez le symptôme",
+      "options": [
+        { "id": "not_start", "label": "Ne démarre pas" },
+        { "id": "not_dry", "label": "Ne sèche pas / faible aspiration" },
+        { "id": "noise", "label": "Bruits anormaux" }
+      ],
+      "next": {
+        "not_start": "D112",
+        "not_dry": "D113",
+        "noise": "D114"
       }
     }
+
   ],
   "diagnostics": [
     {
       "id": "D1",
-      "title": "Réparation d’une fuite de la vanne principale ou avant la vanne",
-      "description": "Vous faites face à des WC bouchés qui ne se vident plus correctement ? Vous vous interrogez sur les raisons de ce blocage et les solutions pour y remédier ? Faites appel à un plombier de MesDépanneurs.fr pour un débouchage efficace et rapide de vos toilettes !\n\nInformations utiles pour le cas \"Débouchage de WC\"\nLe coût du débouchage de WC sans sanibroyeur dépend de l'ampleur de l'engorgement de vos toilettes et de la complexité à éliminer le bouchon. Le cas \"Débouchage de WC\" comprend les prestations suivantes : \n\n- Les frais de déplacement et de main-d'œuvre, \n\n- La fourniture du matériel (pompe manuelle, acides, furet électrique, etc) \n\n- Le débouchage des WC, \n\n- Le nettoyage du chantier. \n\nDans les cas les plus complexes, où le dégorgement dure plus de deux heures, le coût total pourrait excéder le devis initial (si l'usage d'un furet électrique sur différents niveaux est requis par exemple).\n\nNéanmoins, sachez que le plombier vous préviendra en amont de toute modification des frais si cette situation se produit.",
-      "price": "Entre 150€ et 300€ TTC",
+      "title": "Intervention urgente — débordement / inondation WC",
+      "description": "Intervention prioritaire pour débordement ou inondation lié aux WC. Le technicien intervient pour sécuriser les lieux, effectuer un débouchage mécanique (furet professionnel ou pompe), vérifier l'état des canalisations et proposer un plan de réparation. Si la situation nécessite un curage en profondeur ou intervention sur le réseau d'immeubles, un complément de devis sera fourni.",
+      "price": "Entre 150€ et 400€ TTC (selon complexité et matériel requis)",
       "includes": [
-        "Gros matériel",
+        "Déplacement et diagnostic d'urgence",
+        "Intervention débouchage (manuel ou électrique)",
+        "Contrôle des odeurs et nettoyage chantier",
+        "Rapport et recommandations"
+      ]
+    },
+    {
+      "id": "D2",
+      "title": "Réparation fuite / remise en état WC",
+      "description": "Diagnostic et réparation de fuite sur réservoir, bride ou raccords. Le technicien vérifiera les joints, vannes, bande de scellement et remplace toutes les pièces défectueuses nécessaires. Une vérification d'étanchéité complète est effectuée.",
+      "price": "Entre 120€ et 280€ TTC",
+      "includes": [
         "Déplacement",
+        "Pièces d'usure (joints, clapets) incluses",
+        "Main d'œuvre",
+        "Test d'étanchéité"
+      ]
+    },
+    {
+      "id": "D3",
+      "title": "Diagnostic / réparation non urgente — WC",
+      "description": "Contrôle complet pour problèmes mineurs (odeurs, bruit). Le technicien réalisera un diagnostic détaillé et proposera des solutions : nettoyage de siphon, remplacement de pièces d'usure, ou conseil d'entretien.",
+      "price": "Devis gratuit ou entre 60€ et 150€ TTC selon prestation",
+      "includes": [
+        "Diagnostic complet",
         "Petites fournitures",
-        "Nettoyage du chantier",
-        "Main d'oeuvre"
+        "Conseils d'entretien"
+      ]
+    },
+    {
+      "id": "D4",
+      "title": "Fuite sous évier — recherche et réparation",
+      "description": "Recherche de fuite sous évier incluant contrôle du siphon, raccords souples, alimentation, et remplacement des éléments défectueux. Si la fuite provient d'une canalisation arrière, des travaux supplémentaires seront chiffrés.",
+      "price": "Entre 100€ et 300€ TTC",
+      "includes": [
+        "Déplacement et diagnostic",
+        "Remplacement de joints/siphon",
+        "Test d'étanchéité",
+        "Nettoyage"
+      ]
+    },
+    {
+      "id": "D5",
+      "title": "Débouchage évier / lavabo (intervention standard)",
+      "description": "Intervention pour évier ou lavabo bouché : débouchage manuel, hydrocurage local si nécessaire, nettoyage et vérification du bon écoulement. Temps estimé en fonction du niveau d'engorgement.",
+      "price": "Entre 80€ et 250€ TTC",
+      "includes": [
+        "Déplacement",
+        "Matériel (furet, pompe, produits si nécessaires)",
+        "Main d'œuvre",
+        "Conseils préventifs"
+      ]
+    },
+    {
+      "id": "D6",
+      "title": "Installation de robinetterie / remplacement robinet",
+      "description": "Pose ou remplacement de robinetterie (mitigeur, mélangeur) et réglage d'étanchéité. Fourniture de robinet standard incluse si validé en amont; modèles spécifiques sur devis.",
+      "price": "Entre 90€ et 350€ TTC (selon robinet fourni)",
+      "includes": [
+        "Déplacement",
+        "Pose et raccordements",
+        "Test d'étanchéité",
+        "Nettoyage chantier"
+      ]
+    },
+    {
+      "id": "D7",
+      "title": "Fuite douche / baignoire — diagnostic & réparation",
+      "description": "Recherche et réparation de fuite sur mitigeur, sortie, ou bac de douche. Intervention inclut démontage, remplacement des joints, et contrôle de l'étanchéité des éléments sanitaires.",
+      "price": "Entre 110€ et 320€ TTC",
+      "includes": [
+        "Diagnostic complet",
+        "Remplacement de pièces (joints, cartouche)",
+        "Nettoyage et test"
+      ]
+    },
+    {
+      "id": "D8",
+      "title": "Hydrocurage / débouchage d'évacuation douche",
+      "description": "Intervention sur évacuation lente : nettoyage du siphon, débouchage mécanique ou hydrocureuse en fonction du besoin. Diagnostic de l'origine (cheveux, savon, calcaires, résidus).",
+      "price": "Entre 100€ et 300€ TTC",
+      "includes": [
+        "Déplacement",
+        "Débouchage mécanique ou hydrocureur",
+        "Nettoyage du chantier"
+      ]
+    },
+    {
+      "id": "D9",
+      "title": "Remplacement mitigeur / robinetterie douche",
+      "description": "Remplacement ou réparation de mitigeur, réglage de la pression et du débit. Fourniture de robinet standard possible sur demande.",
+      "price": "Entre 120€ et 400€ TTC",
+      "includes": [
+        "Déplacement",
+        "Pose et réglage",
+        "Pièces standards incluses (si confirmées)",
+        "Test d'étanchéité"
+      ]
+    },
+    {
+      "id": "D10",
+      "title": "Réparation fuite canalisation apparente",
+      "description": "Intervention sur canalisation visible : resserrage, remplacement de segments, ou colmatage temporaire si nécessaire. Si intervention sous chape ou mur, un diagnostic de repérage (caméra) sera proposé.",
+      "price": "Entre 150€ et 450€ TTC",
+      "includes": [
+        "Déplacement",
+        "Réparation canalisation apparente",
+        "Conseils et rapport"
+      ]
+    },
+    {
+      "id": "D11",
+      "title": "Bouchon important — curage / débouchage réseau",
+      "description": "Intervention pour canalisation fortement engorgée nécessitant curage haute pression ou dégorgement approfondi. Recommandé si débouchage simple inefficace.",
+      "price": "Entre 250€ et 800€ TTC (selon profondeur et moyens)",
+      "includes": [
+        "Inspection caméra si nécessaire",
+        "Curage haute pression",
+        "Nettoyage et remise en état"
+      ]
+    },
+    {
+      "id": "D12",
+      "title": "Inspection par caméra — diagnostic canalisation",
+      "description": "Inspection par caméra pour localiser fuites, cassures ou racines dans les canalisations. Fourniture d'un rapport vidéo et devis de réparation si requis.",
+      "price": "Entre 180€ et 600€ TTC",
+      "includes": [
+        "Déplacement",
+        "Inspection caméra complète",
+        "Rapport et devis"
+      ]
+    },
+    {
+      "id": "D13",
+      "title": "Réparation / dépannage chauffe-eau électrique",
+      "description": "Diagnostic chauffe-eau électrique : contrôle résistance, anode, thermostat et câblage. Remplacement de pièces défectueuses sur devis ou intervention directe si pièce standard disponible.",
+      "price": "Entre 160€ et 450€ TTC",
+      "includes": [
+        "Déplacement",
+        "Diagnostic électrique et hydraulique",
+        "Pièces de remplacement standard"
+      ]
+    },
+    {
+      "id": "D14",
+      "title": "Entretien / réparation chauffe-eau gaz",
+      "description": "Intervention sécurisée sur chauffe-eau à gaz incluant contrôle brûleur, échappement, sécurité and thermostat. Toute intervention gaz nécessite technicien certifié.",
+      "price": "Entre 180€ et 500€ TTC",
+      "includes": [
+        "Déplacement",
+        "Contrôle sécurité gaz",
+        "Réglage ou remplacement pièces"
+      ]
+    },
+
+    {
+      "id": "D15",
+      "title": "Intervention sur sanibroyeur — maintenance ou remplacement",
+      "description": "Entretien ou dépannage de sanibroyeur : vérification du système d'évacuation, rotor, et clapets. Remplacement si irrémédiablement endommagé.",
+      "price": "Entre 180€ et 420€ TTC",
+      "includes": [
+        "Déplacement",
+        "Nettoyage / réparation rotor",
+        "Remplacement pièces si nécessaire"
+      ]
+    },
+    {
+      "id": "D16",
+      "title": "Diagnostic plomberie standard",
+      "description": "Diagnostic complet et proposition de réparation pour fuite, odeurs ou dysfonctionnements mineurs. Le technicien fournira un devis clair.",
+      "price": "Forfait diagnostic : 60€ à 120€ TTC",
+      "includes": [
+        "Déplacement",
+        "Diagnostic",
+        "Proposition de devis"
+      ]
+    },
+
+    {
+      "id": "D20",
+      "title": "Diagnostic appareil électrique déclencheur de coupure",
+      "description": "Intervention pour vérifier si un appareil provoque une surcharge ou déclenchements répétés : test de continuité, vérification du circuit et recommandations.",
+      "price": "Entre 90€ et 250€ TTC",
+      "includes": [
+        "Déplacement",
+        "Tests appareils et prise",
+        "Conseils et préconisations"
+      ]
+    },
+    {
+      "id": "D21",
+      "title": "Intervention plaque / four — dysfonctionnement ou sécurité",
+      "description": "Diagnostic et réparation d'éléments de cuisson (résistances, relais, commandes). Vérification sécurité électrique obligatoire.",
+      "price": "Entre 120€ et 400€ TTC",
+      "includes": [
+        "Déplacement",
+        "Diagnostic électronique",
+        "Remplacement pièces sur devis"
+      ]
+    },
+    {
+      "id": "D22",
+      "title": "Réfrigérateur — diagnostic circuit froid",
+      "description": "Vérification du circuit frigorifique, compresseur et dégivrage. Intervention pouvant nécessiter un technicien frigoriste selon la panne.",
+      "price": "Entre 120€ et 600€ TTC",
+      "includes": [
+        "Déplacement",
+        "Diagnostic compresseur",
+        "Dégivrage et nettoyage condensateur"
+      ]
+    },
+    {
+      "id": "D23",
+      "title": "Problème électrique sur système HVAC / pompe à chaleur",
+      "description": "Intervention spécialisée pour systèmes de grande puissance : diagnostic électrique, vérification du compresseur, gestionnaire et sécurité.",
+      "price": "Entre 200€ et 800€ TTC",
+      "includes": [
+        "Déplacement",
+        "Diagnostic système complet",
+        "Proposition de réparation"
+      ]
+    },
+    {
+      "id": "D24",
+      "title": "Situation critique — fumée / odeur de brûlé (sécurité)",
+      "description": "Intervention d'urgence recommandée. Coupure du circuit, contrôle du tableau électrique et recherche de source d'échauffement ou incendie électrique.",
+      "price": "Intervention d'urgence à partir de 200€ TTC",
+      "includes": [
+        "Déplacement prioritaire",
+        "Mesures de sécurité",
+        "Diagnostic et rapport"
+      ]
+    },
+    {
+      "id": "D25",
+      "title": "Échauffement localisé — remplacement / sécurisation",
+      "description": "Remplacement ou sécurisation d'un élément échauffé (prise, câble, luminaire). Analyse et proposition de mise en conformité.",
+      "price": "Entre 120€ et 350€ TTC",
+      "includes": [
+        "Déplacement",
+        "Remplacement composant",
+        "Test de mise en sécurité"
+      ]
+    },
+    {
+      "id": "D26",
+      "title": "Intervention électrique urgente",
+      "description": "Prise en charge en urgence (sécurité) pour tout incident électrique mettant en danger l'utilisateur ou les locaux. Intervention du technicien, sécurisation et diagnostic.",
+      "price": "Tarif urgence majoré (à partir de 180€ TTC)",
+      "includes": [
+        "Déplacement prioritaire",
+        "Sécurisation immédiate",
+        "Rapport et devis de réparation"
+      ]
+    },
+    {
+      "id": "D27",
+      "title": "Intervention électrique standard",
+      "description": "Diagnostic et réparation non urgente : disjonctions, prises, câblages, remplacement d'éléments. Devis fourni pour travaux plus importants.",
+      "price": "Entre 90€ et 300€ TTC",
+      "includes": [
+        "Déplacement",
+        "Réparation standard",
+        "Devis si nécessaire"
+      ]
+    },
+    {
+      "id": "D28",
+      "title": "Diagnostic / devis électricité (sans intervention immédiate)",
+      "description": "Intervention pour évaluer l'état général et fournir un devis détaillé pour mise en conformité ou réparations.",
+      "price": "Forfait diagnostic : 60€ à 120€ TTC",
+      "includes": [
+        "Diagnostic complet",
+        "Devis détaillé"
+      ]
+    },
+
+    {
+      "id": "D40",
+      "title": "Intervention urgente chaudière (pas de chauffage)",
+      "description": "Intervention prioritaire pour remise en marche de chaudière en période sensible. Diagnostic du circuit, vérification sécurité gaz/électrique, purges et mise en service.",
+      "price": "À partir de 180€ TTC (selon cause)",
+      "includes": [
+        "Déplacement prioritaire",
+        "Diagnostic complet",
+        "Remise en service si possible"
+      ]
+    },
+    {
+      "id": "D41",
+      "title": "Diagnostic chaudière et réparations courantes",
+      "description": "Vérification brûleur, pompe, pression circuit, purge et contrôle des sécurités. Remplacement des pièces courantes sur devis.",
+      "price": "Entre 120€ et 450€ TTC",
+      "includes": [
+        "Déplacement",
+        "Diagnostic",
+        "Remplacement pièces courantes (sur devis)"
+      ]
+    },
+    {
+      "id": "D42",
+      "title": "Devis / audit thermique (chaudière)",
+      "description": "Audit complet avec proposition de remplacement ou amélioration (économie d'énergie). Rapport détaillé et devis.",
+      "price": "Forfait audit : 150€ à 300€ TTC",
+      "includes": [
+        "Visite technique",
+        "Rapport et devis"
+      ]
+    },
+
+    {
+      "id": "D60",
+      "title": "Ouverture de porte sans casse (si possible)",
+      "description": "Ouverture de porte claquée sans casse : techniques non destructives pour récupérer l'accès. Si impossible, proposition de solution avec devis.",
+      "price": "Entre 80€ et 220€ TTC",
+      "includes": [
+        "Déplacement",
+        "Ouverture sans casse (technique)",
+        "Conseils sécurité"
+      ]
+    },
+    {
+      "id": "D61",
+      "title": "Ouverture porte (avec possibilité de casse) — intervention rapide",
+      "description": "Ouverture forcée si nécessaire en cas d'urgence. Remplacement ou réparation de la serrure proposé après accès.",
+      "price": "Entre 120€ et 350€ TTC",
+      "includes": [
+        "Déplacement",
+        "Ouverture",
+        "Remplacement serrure sur devis"
+      ]
+    },
+    {
+      "id": "D62",
+      "title": "Intervention serrurerie (évaluation) / devis",
+      "description": "Diagnostic et devis pour réparation ou remplacement de serrure et renforcement de sécurité.",
+      "price": "Forfait diagnostic : 60€ à 120€ TTC",
+      "includes": [
+        "Diagnostic",
+        "Devis de réparation / renforcement"
+      ]
+    },
+    {
+      "id": "D63",
+      "title": "Ouverture prise en charge assurance — intervention standard",
+      "description": "Intervention prise en charge potentiellement par assurance (selon contrat) : ouverture et constat. Nous pouvons fournir facture et photos pour dossier assurance.",
+      "price": "Tarif variable selon assurance (devis fourni)",
+      "includes": [
+        "Déplacement",
+        "Ouverture",
+        "Rapport pour assurance"
+      ]
+    },
+    {
+      "id": "D64",
+      "title": "Serrurerie — réparation standard ou remplacement cylindre",
+      "description": "Remplacement cylindre, sécurisation porte et reproduction de clé. Préconisations sur niveau de sécurité.",
+      "price": "Entre 120€ et 450€ TTC",
+      "includes": [
+        "Déplacement",
+        "Changement cylindre",
+        "Reproduction clés"
+      ]
+    },
+    {
+      "id": "D65",
+      "title": "Extraction clé cassée et remplacement cylindre",
+      "description": "Extraction de la clé cassée, éventuel remplacement du cylindre et reproduction de clefs. Intervention soignée pour minimiser la casse.",
+      "price": "Entre 100€ et 320€ TTC",
+      "includes": [
+        "Déplacement",
+        "Extraction",
+        "Remplacement cylindre (si nécessaire)"
+      ]
+    },
+    {
+      "id": "D66",
+      "title": "Extraction clé bloquée et réparation",
+      "description": "Extraction sécurisée d'une clé cassée dans la serrure et remise en état si possible, avec recommandation de remplacement.",
+      "price": "Entre 90€ et 280€ TTC",
+      "includes": [
+        "Déplacement",
+        "Extraction",
+        "Diagnostic serrure"
+      ]
+    },
+    {
+      "id": "D67",
+      "title": "Reproduction de clé après intervention",
+      "description": "Reproduction de clé et tests, fournis si possible le jour-même selon type de clé.",
+      "price": "Entre 20€ et 80€ TTC (selon complexité)",
+      "includes": [
+        "Reproduction",
+        "Test et réglage"
+      ]
+    },
+    {
+      "id": "D68",
+      "title": "Réparation porte bois / serrures classiques",
+      "description": "Réglage charnière, remplacement serrure ou renfort, mise en conformité et sécurité.",
+      "price": "Entre 100€ et 300€ TTC",
+      "includes": [
+        "Déplacement",
+        "Réparation cadre / serrure",
+        "Test"
+      ]
+    },
+    {
+      "id": "D69",
+      "title": "Intervention porte métallique / blindée",
+      "description": "Intervention spécialisée sur portes blindées : remplacement cylindre haute sécurité, réglage, ou réparation mécanisme.",
+      "price": "Entre 180€ et 600€ TTC",
+      "includes": [
+        "Déplacement",
+        "Intervention spécialisée",
+        "Devis pièces spécifiques"
+      ]
+    },
+    {
+      "id": "D70",
+      "title": "Réparation porte PVC / aluminium",
+      "description": "Réglage, remplacement ferrures et cylindre adapté, étanchéité et tests.",
+      "price": "Entre 100€ et 350€ TTC",
+      "includes": [
+        "Déplacement",
+        "Réparation / remplacement ferrures",
+        "Tests"
+      ]
+    },
+    {
+      "id": "D71",
+      "title": "Réglage / graissage charnières et gonds",
+      "description": "Intervention rapide pour gonds desserrés ou charnières bruyantes : réglage, graissage, remplacement vis si besoin.",
+      "price": "Entre 60€ et 150€ TTC",
+      "includes": [
+        "Déplacement",
+        "Réglage",
+        "Graissage"
+      ]
+    },
+    {
+      "id": "D72",
+      "title": "Remise en état porte partiellement décrochée",
+      "description": "Intervention pour ré-aligner et sécuriser la porte, remplacement de fixations ou renfort du cadre si nécessaire.",
+      "price": "Entre 120€ et 400€ TTC",
+      "includes": [
+        "Déplacement",
+        "Réparation / renfort",
+        "Tests"
+      ]
+    },
+
+    {
+      "id": "D80",
+      "title": "Remplacement vitre identique",
+      "description": "Remplacement de la vitre cassée par une vitre équivalente (composition et épaisseur identiques). Intervention professionnelle avec nettoyage et évacuation.",
+      "price": "Entre 120€ et 450€ TTC",
+      "includes": [
+        "Déplacement",
+        "Remplacement vitre",
+        "Nettoyage et évacuation"
+      ]
+    },
+    {
+      "id": "D81",
+      "title": "Remplacement vitre & upgrade isolation",
+      "description": "Remplacement par un double vitrage performant (amélioration thermique et acoustique) avec mise en place conforme.",
+      "price": "Entre 250€ et 1200€ TTC (selon dimensions)",
+      "includes": [
+        "Déplacement",
+        "Mesure et fourniture vitrage",
+        "Pose et étanchéité"
+      ]
+    },
+    {
+      "id": "D82",
+      "title": "Solution temporaire vitrerie (sécurisation rapide)",
+      "description": "Pose d'une protection temporaire (film, planche) en attendant remplacement définitif. Utile en cas d'urgence sécurité ou météo.",
+      "price": "Entre 80€ et 220€ TTC",
+      "includes": [
+        "Déplacement",
+        "Protection temporaire",
+        "Conseil et devis"
+      ]
+    },
+    {
+      "id": "D83",
+      "title": "Réglage / réparation menuiserie bois",
+      "description": "Réglage cadre, remplacement ferrures et amélioration de l'étanchéité pour menuiserie bois.",
+      "price": "Entre 100€ et 350€ TTC",
+      "includes": [
+        "Déplacement",
+        "Réglage",
+        "Remplacement ferrures"
+      ]
+    },
+    {
+      "id": "D84",
+      "title": "Réparation / réglage menuiserie aluminium",
+      "description": "Intervention pour menuiserie aluminium : réglage, remplacement joints, ou réparation mécanisme de coulissement.",
+      "price": "Entre 120€ et 400€ TTC",
+      "includes": [
+        "Déplacement",
+        "Réglage",
+        "Remplacement pièces"
+      ]
+    },
+    {
+      "id": "D85",
+      "title": "Réglage menuiserie PVC / remplacement poignées",
+      "description": "Réglage, remplacement de poignées ou mécanismes de fermeture sur fenêtres PVC ou aluminium.",
+      "price": "Entre 80€ et 300€ TTC",
+      "includes": [
+        "Déplacement",
+        "Réglage poignée",
+        "Test étanchéité"
+      ]
+    },
+    {
+      "id": "D86",
+      "title": "Réparation menuiserie déformée (intempéries)",
+      "description": "Intervention pour restauration ou remplacement partiel suite à déformation due à l'humidité ou fissures.",
+      "price": "Entre 150€ et 600€ TTC",
+      "includes": [
+        "Diagnostic",
+        "Réparation ou devis remplacement"
+      ]
+    },
+    {
+      "id": "D87",
+      "title": "Réglage mécanique fenêtre (blocage)",
+      "description": "Réglage de mécanismes bloqués, nettoyage guides et remplacement petites pièces d'usure.",
+      "price": "Entre 80€ et 220€ TTC",
+      "includes": [
+        "Déplacement",
+        "Réglage",
+        "Nettoyage"
+      ]
+    },
+    {
+      "id": "D88",
+      "title": "Remplacement joint d'étanchéité (air)",
+      "description": "Remplacement de joints et amélioration de l'étanchéité contre les courants d'air et infiltrations.",
+      "price": "Entre 80€ et 350€ TTC",
+      "includes": [
+        "Déplacement",
+        "Fourniture et pose joint"
+      ]
+    },
+    {
+      "id": "D89",
+      "title": "Réparation infiltration (eau pluie)",
+      "description": "Traitement des infiltrations : remplacement joints, étanchéité bande, et vérification appuis de fenêtre.",
+      "price": "Entre 120€ et 450€ TTC",
+      "includes": [
+        "Diagnostic",
+        "Réparation étanchéité"
+      ]
+    },
+    {
+      "id": "D90",
+      "title": "Remplacement joint usé",
+      "description": "Remplacement du joint dégradé pour retrouver l'étanchéité et l'isolation.",
+      "price": "Entre 70€ et 200€ TTC",
+      "includes": [
+        "Déplacement",
+        "Remplacement joint"
+      ]
+    },
+    {
+      "id": "D91",
+      "title": "Remplacement intercalaire / désembuage vitrage",
+      "description": "Intervention sur vitrage scellé : remplacement d'intercalaire ou désembuage par décongélation technique si possible.",
+      "price": "Entre 200€ et 700€ TTC",
+      "includes": [
+        "Déplacement",
+        "Remplacement intercalaire",
+        "Devis"
+      ]
+    },
+    {
+      "id": "D92",
+      "title": "Contrôle choc / fissure post-travaux",
+      "description": "Contrôle et intervention suite à choc (remplacement vitre ou réparation structure).",
+      "price": "Entre 150€ et 600€ TTC",
+      "includes": [
+        "Diagnostic",
+        "Réparation / remplacement"
+      ]
+    },
+
+    {
+      "id": "D100",
+      "title": "Erreur appareil électroménager — diagnostic code erreur",
+      "description": "Intervention pour analyse d'un code erreur affiché par un appareil. Diagnostic électronique, réinitialisation éventuelle et proposition de réparation.",
+      "price": "Entre 80€ et 220€ TTC",
+      "includes": [
+        "Déplacement",
+        "Lecture code erreur",
+        "Diagnostic"
+      ]
+    },
+    {
+      "id": "D101",
+      "title": "Dépannage appareil électroménager — panne générale",
+      "description": "Diagnostic et réparation standard sur appareil sans code : tests moteurs, capteurs et éléments électriques.",
+      "price": "Entre 90€ et 320€ TTC",
+      "includes": [
+        "Déplacement",
+        "Diagnostic",
+        "Remplacement pièces courantes sur devis"
+      ]
+    },
+    {
+      "id": "D102",
+      "title": "Fuite hublot / joint machine à laver",
+      "description": "Remplacement du joint de hublot ou réparation du mécanisme d'étanchéité. Vérification pression et durites.",
+      "price": "Entre 100€ et 300€ TTC",
+      "includes": [
+        "Déplacement",
+        "Remplacement joint",
+        "Test d'étanchéité"
+      ]
+    },
+    {
+      "id": "D103",
+      "title": "Fuite pompe / durite machine à laver",
+      "description": "Remplacement pompe de vidange ou durite défectueuse, contrôle du bac et des fixations.",
+      "price": "Entre 120€ et 350€ TTC",
+      "includes": [
+        "Déplacement",
+        "Remplacement pompe/durite"
+      ]
+    },
+    {
+      "id": "D104",
+      "title": "Problème arrivée d'eau (machine à laver)",
+      "description": "Vérification électrovanne, pression, filtre d'arrivée et raccords. Remise en service possible.",
+      "price": "Entre 80€ et 220€ TTC",
+      "includes": [
+        "Diagnostic arrivée eau",
+        "Remplacement filtre/vanne"
+      ]
+    },
+    {
+      "id": "D105",
+      "title": "Lave-vaisselle — nettoyage / maintenance",
+      "description": "Nettoyage filtre et bras, détartrage et tests. Peut résoudre la majorité des problèmes de performance.",
+      "price": "Entre 70€ et 180€ TTC",
+      "includes": [
+        "Déplacement",
+        "Nettoyage filtre/bras",
+        "Conseils entretien"
+      ]
+    },
+    {
+      "id": "D106",
+      "title": "Lave-vaisselle — problème nécessitant réparation",
+      "description": "Remplacement pompe, résistance ou carte électronique si nécessaire. Devis après diagnostic.",
+      "price": "Entre 120€ et 450€ TTC",
+      "includes": [
+        "Diagnostic",
+        "Remplacement pièces (sur devis)"
+      ]
+    },
+    {
+      "id": "D107",
+      "title": "Réfrigérateur — perte de froid",
+      "description": "Diagnostic circuit froid, nettoyage échangeur, contrôle compresseur et niveau de gaz si nécessaire (intervention frigoriste si requis).",
+      "price": "Entre 150€ et 700€ TTC",
+      "includes": [
+        "Diagnostic",
+        "Tests compresseur"
+      ]
+    },
+    {
+      "id": "D108",
+      "title": "Dégivrage / problème d'étanchéité froid",
+      "description": "Intervention pour problèmes de givre excessif : contrôle thermostats, joints et dégivrage complet.",
+      "price": "Entre 90€ et 300€ TTC",
+      "includes": [
+        "Dégivrage",
+        "Remplacement joints si nécessaire"
+      ]
+    },
+    {
+      "id": "D109",
+      "title": "Fuite eau réfrigérateur (condensation)",
+      "description": "Contrôle évacuation condensation, bac, et rencontre éventuelle d'un problème de dégivrage automatique.",
+      "price": "Entre 80€ et 250€ TTC",
+      "includes": [
+        "Diagnostic",
+        "Réparation circuit d'évacuation"
+      ]
+    },
+    {
+      "id": "D110",
+      "title": "Four / plaque — diagnostic chauffe",
+      "description": "Contrôle résistances, thermocouple et commandes ; remplacement de composants défectueux si nécessaire.",
+      "price": "Entre 120€ et 420€ TTC",
+      "includes": [
+        "Diagnostic",
+        "Remplacement résistances (sur devis)"
+      ]
+    },
+    {
+      "id": "D111",
+      "title": "Four — réglage et calibration",
+      "description": "Calibration température et réparation éléments de convection, réglage pour cuisson homogène.",
+      "price": "Entre 90€ et 260€ TTC",
+      "includes": [
+        "Diagnostic",
+        "Calibration"
+      ]
+    },
+    {
+      "id": "D112",
+      "title": "Sèche-linge — panne démarrage",
+      "description": "Diagnostic du moteur, carte et couplage. Remplacement pièces si nécessaire sur devis.",
+      "price": "Entre 100€ et 350€ TTC",
+      "includes": [
+        "Diagnostic",
+        "Remplacement pièces sur devis"
+      ]
+    },
+    {
+      "id": "D113",
+      "title": "Sèche-linge — faible efficacité / filtration",
+      "description": "Nettoyage et contrôle filtre, résistance et ventilation ; remise en état si obstruction.",
+      "price": "Entre 80€ et 220€ TTC",
+      "includes": [
+        "Nettoyage",
+        "Contrôle ventilation"
+      ]
+    },
+    {
+      "id": "D114",
+      "title": "Appareil électroménager — diagnostic bruit",
+      "description": "Recherche cause de vibrations ou bruits : roulements, tambour, supports; remplacement sur devis.",
+      "price": "Entre 90€ et 300€ TTC",
+      "includes": [
+        "Diagnostic",
+        "Remplacement pièces si nécessaire"
       ]
     }
   ]
