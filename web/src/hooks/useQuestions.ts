@@ -2,54 +2,73 @@ import { useEffect, useState } from "react";
 import type { Diagnostic, Question, StepResponse } from "common";
 
 export function useQuestions() {
+  const [sessionId, setSessionId] = useState<string | null>(null);
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [diagnostic, setDiagnostic] = useState<Diagnostic | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [questionsHistory, setQuestionsHistory] = useState<Question[]>([]);
+  const [error] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/questions")
-      .then((res) => res.json())
-      .then((data) => {
-        setCurrentQuestion(data);
-        setLoading(false);
-        setQuestionsHistory([data]);
-      })
-      .catch((err) => {
-        setError(err.message);
+    const initSession = async () => {
+      const res = await fetch("http://localhost:3000/api/sessions", {
+        method: "post",
       });
+      const data = await res.json();
+      setSessionId(data.sessionId);
+
+      const step: StepResponse = data.step;
+      if (step.type === "question") setCurrentQuestion(step.data);
+      else setDiagnostic(step.data);
+      setLoading(false);
+    };
+
+    initSession().catch(console.error);
   }, []);
 
   const goNext = async (answerId: string) => {
-    if (!currentQuestion) return;
+    if (!sessionId && !currentQuestion) return;
 
     setLoading(true);
     const res = await fetch(
-      `http://localhost:3000/api/questions/${currentQuestion.id}/${answerId}`,
-      { method: "post" },
+      `http://localhost:3000/api/sessions/${sessionId}/next`,
+      {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ questionId: currentQuestion?.id, answerId }),
+      },
     );
     const next: StepResponse = await res.json();
 
     if (next.type === "question") {
       setCurrentQuestion(next.data);
-      setQuestionsHistory((prev) => [...prev, next.data]);
+      setDiagnostic(null);
     } else {
       setDiagnostic(next.data);
-      setCurrentQuestion(null); // Fin du questionnaire
+      setCurrentQuestion(null);
     }
     setLoading(false);
   };
 
-  const goPrev = () => {
-    if (questionsHistory.length <= 1) return; // On ne peut pas revenir avant la première question
+  const goPrev = async () => {
+    if (!sessionId) return;
+
     setLoading(true);
-    setQuestionsHistory((prev) => {
-      const newHistory = prev.slice(0, -1);
-      setCurrentQuestion(newHistory[newHistory.length - 1]);
-      setLoading(false);
-      return newHistory;
-    });
+    const res = await fetch(
+      `http://localhost:3000/api/sessions/${sessionId}/previous`,
+      {
+        method: "post",
+      },
+    );
+    const prev: StepResponse = await res.json();
+
+    if (prev.type === "question") {
+      setCurrentQuestion(prev.data);
+      setDiagnostic(null);
+    } else {
+      setDiagnostic(prev.data);
+      setCurrentQuestion(null);
+    }
+    setLoading(false);
   };
 
   return {

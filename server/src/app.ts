@@ -1,6 +1,6 @@
 import express from "express";
-import questions from "./routes/questions";
 import cors from "cors";
+import sessions from "./routes/sessions";
 
 const app = express();
 
@@ -13,6 +13,6 @@ app.use(
 app.use(express.json());
 
 // Routes
-app.use("/api/questions", questions);
+app.use("/api/sessions", sessions);
 
 export default app;
