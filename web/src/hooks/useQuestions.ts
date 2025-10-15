@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-interface Question {
+export interface Question {
   id: number;
   question: string;
   options: { id: string; label: string }[];
   next?: Record<string, number | string>;
 }
 
-interface Diagnostic {
+export interface Diagnostic {
   id: string;
   title: string;
   description: string;
