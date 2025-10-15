@@ -3,12 +3,12 @@
     "id": 1,
     "question": "Mon problème concerne : ",
     "options": [
-      { "id":  "plumbing", "label":  "Plomberie" },
-      { "id":  "electricity", "label":  "Electricité" },
-      { "id":  "heating", "label":  "Chauffage" },
-      { "id":  "locksmith", "label":  "Serrurerie" },
-      { "id":  "glazing", "label":  "Vitrerie" },
-      { "id":  "household_appliances", "label":  "Électroménager" }
+      { "id": "plumbing", "label": "Plomberie" },
+      { "id": "electricity", "label": "Electricité" },
+      { "id": "heating", "label": "Chauffage" },
+      { "id": "locksmith", "label": "Serrurerie" },
+      { "id": "glazing", "label": "Vitrerie" },
+      { "id": "household_appliances", "label": "Électroménager" }
     ],
     "next": {
       "plumbing": 2,
@@ -23,13 +23,22 @@
     "id": 2,
     "question": "Où se situe votre problème ?",
     "options": [
-      { "id":  "wc", "label":  "WC" },
-      { "id":  "sink", "label":  "Lavabo / évier" },
-      { "id":  "shower", "label":  "Douche / baignoire" },
-      { "id":  "general_building_column", "label":  "Colonne générale d'immeuble" },
-      { "id":  "piping", "label":  "Tuyauterie / canalisation" },
-      { "id":  "washing_machine", "label":  "Tuyau machine à laver / lave-vaisselle" },
-      { "id":  "boiler", "label":  "Chaudière / chauffe-eau / ballon d'eau chaude" }
+      { "id": "wc", "label": "WC" },
+      { "id": "sink", "label": "Lavabo / évier" },
+      { "id": "shower", "label": "Douche / baignoire" },
+      {
+        "id": "general_building_column",
+        "label": "Colonne générale d'immeuble"
+      },
+      { "id": "piping", "label": "Tuyauterie / canalisation" },
+      {
+        "id": "washing_machine",
+        "label": "Tuyau machine à laver / lave-vaisselle"
+      },
+      {
+        "id": "boiler",
+        "label": "Chaudière / chauffe-eau / ballon d'eau chaude"
+      }
     ],
     "next": {
       "wc": 8,
@@ -45,10 +54,13 @@
     "id": 8,
     "question": "Quelle est la nature de votre problème ?",
     "options": [
-      { "id":  "congestion", "label":  "Engorgement (WC bouchés)" },
-      { "id":  "leak", "label":  "Fuite (recherche de fuite)" },
-      { "id":  "operating_problem", "label": "Problème de fonctionnement (cuvette...)" },
-      { "id":  "change", "label": "Changement de WC"}
+      { "id": "congestion", "label": "Engorgement (WC bouchés)" },
+      { "id": "leak", "label": "Fuite (recherche de fuite)" },
+      {
+        "id": "operating_problem",
+        "label": "Problème de fonctionnement (cuvette...)"
+      },
+      { "id": "change", "label": "Changement de WC" }
     ],
     "next": {
       "congestion": 15,
@@ -61,8 +73,8 @@
     "id": 15,
     "question": "Votre WC possède t-il un sanibroyeur ?",
     "options": [
-      { "id":  "yes", "label":  "Oui" },
-      { "id":  "no", "label":  "Non" }
+      { "id": "yes", "label": "Oui" },
+      { "id": "no", "label": "Non" }
     ],
     "next": {
       "yes": 19,
