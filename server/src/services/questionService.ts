@@ -1,37 +1,6 @@
 import path from "node:path";
 import * as fs from "node:fs";
-
-interface Question {
-  id: number;
-  question: string;
-  options: { id: string; label: string }[];
-  next?: Record<string, number | string>;
-}
-
-interface Diagnostic {
-  id: string;
-  title: string;
-  description: string;
-  price: string;
-  includes: string[];
-}
-
-interface Quiz {
-  questions: Question[];
-  diagnostics: Diagnostic[];
-}
-
-interface StepResponseQuestion {
-  type: "question";
-  data: Question;
-}
-
-interface StepResponseDiagnostic {
-  type: "diagnostic";
-  data: Diagnostic;
-}
-
-type StepResponse = StepResponseQuestion | StepResponseDiagnostic;
+import { Quiz, StepResponse } from "common";
 
 function loadQuiz(): Quiz {
   const filePath = path.join(__dirname, "../data/questions.json");

@@ -3,13 +3,13 @@ import {
   ArrowRightCircleIcon,
   CheckIcon,
 } from "@heroicons/react/20/solid";
-import type { Question } from "../hooks/useQuestions.ts";
 import plumbing from "../assets/plumbing.svg";
 import electricity from "../assets/electricity.svg";
 import glazing from "../assets/glazing.svg";
 import heating from "../assets/heating.svg";
 import household_appliances from "../assets/household_appliances.svg";
 import locksmith from "../assets/locksmith.svg";
+import type { Question } from "common";
 
 const iconMap: Record<string, string> = {
   plumbing: plumbing,

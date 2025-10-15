@@ -1,6 +1,6 @@
 import Header from "./Header.tsx";
 import { CheckCircleIcon, CurrencyEuroIcon } from "@heroicons/react/24/outline";
-import type { Diagnostic } from "../hooks/useQuestions.ts";
+import type { Diagnostic } from "common";
 
 export default function DiagnosticView({
   diagnostic,

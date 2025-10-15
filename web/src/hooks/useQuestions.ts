@@ -1,31 +1,5 @@
 import { useEffect, useState } from "react";
-
-export interface Question {
-  id: number;
-  question: string;
-  options: { id: string; label: string }[];
-  next?: Record<string, number | string>;
-}
-
-export interface Diagnostic {
-  id: string;
-  title: string;
-  description: string;
-  price: string;
-  includes: string[];
-}
-
-interface StepResponseQuestion {
-  type: "question";
-  data: Question;
-}
-
-interface StepResponseDiagnostic {
-  type: "diagnostic";
-  data: Diagnostic;
-}
-
-type StepResponse = StepResponseQuestion | StepResponseDiagnostic;
+import type { Diagnostic, Question, StepResponse } from "common";
 
 export function useQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
