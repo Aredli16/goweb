@@ -4,11 +4,32 @@ interface Question {
   id: number;
   question: string;
   options: { id: string; label: string }[];
-  next?: Record<string, number>;
+  next?: Record<string, number | string>;
 }
+
+interface Diagnostic {
+  id: string;
+  title: string;
+  description: string;
+  price: string;
+  includes: string[];
+}
+
+interface StepResponseQuestion {
+  type: "question";
+  data: Question;
+}
+
+interface StepResponseDiagnostic {
+  type: "diagnostic";
+  data: Diagnostic;
+}
+
+type StepResponse = StepResponseQuestion | StepResponseDiagnostic;
 
 export function useQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
+  const [diagnostic, setDiagnostic] = useState<Diagnostic | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [questionsHistory, setQuestionsHistory] = useState<Question[]>([]);
@@ -34,9 +55,15 @@ export function useQuestions() {
       `http://localhost:3000/api/questions/${currentQuestion.id}/${answerId}`,
       { method: "post" },
     );
-    const next = await res.json();
-    setCurrentQuestion(next);
-    setQuestionsHistory((prev) => [...prev, next]);
+    const next: StepResponse = await res.json();
+
+    if (next.type === "question") {
+      setCurrentQuestion(next.data);
+      setQuestionsHistory((prev) => [...prev, next.data]);
+    } else {
+      setDiagnostic(next.data);
+      setCurrentQuestion(null); // Fin du questionnaire
+    }
     setLoading(false);
   };
 
@@ -53,6 +80,7 @@ export function useQuestions() {
 
   return {
     currentQuestion,
+    diagnostic,
     loading,
     error,
     goNext,

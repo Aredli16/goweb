@@ -1,84 +1,101 @@
-[
-  {
-    "id": 1,
-    "question": "Mon problème concerne : ",
-    "options": [
-      { "id": "plumbing", "label": "Plomberie" },
-      { "id": "electricity", "label": "Electricité" },
-      { "id": "heating", "label": "Chauffage" },
-      { "id": "locksmith", "label": "Serrurerie" },
-      { "id": "glazing", "label": "Vitrerie" },
-      { "id": "household_appliances", "label": "Électroménager" }
-    ],
-    "next": {
-      "plumbing": 2,
-      "electricity": 3,
-      "heating": 4,
-      "locksmith": 5,
-      "glazing": 6,
-      "household_appliances": 7
-    }
-  },
-  {
-    "id": 2,
-    "question": "Où se situe votre problème ?",
-    "options": [
-      { "id": "wc", "label": "WC" },
-      { "id": "sink", "label": "Lavabo / évier" },
-      { "id": "shower", "label": "Douche / baignoire" },
-      {
-        "id": "general_building_column",
-        "label": "Colonne générale d'immeuble"
-      },
-      { "id": "piping", "label": "Tuyauterie / canalisation" },
-      {
-        "id": "washing_machine",
-        "label": "Tuyau machine à laver / lave-vaisselle"
-      },
-      {
-        "id": "boiler",
-        "label": "Chaudière / chauffe-eau / ballon d'eau chaude"
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Mon problème concerne : ",
+      "options": [
+        { "id": "plumbing", "label": "Plomberie" },
+        { "id": "electricity", "label": "Electricité" },
+        { "id": "heating", "label": "Chauffage" },
+        { "id": "locksmith", "label": "Serrurerie" },
+        { "id": "glazing", "label": "Vitrerie" },
+        { "id": "household_appliances", "label": "Électroménager" }
+      ],
+      "next": {
+        "plumbing": 2,
+        "electricity": 3,
+        "heating": 4,
+        "locksmith": 5,
+        "glazing": 6,
+        "household_appliances": 7
       }
-    ],
-    "next": {
-      "wc": 8,
-      "sink": 9,
-      "shower": 10,
-      "general_building_column": 11,
-      "piping": 12,
-      "washing_machine": 13,
-      "boiler": 14
+    },
+    {
+      "id": 2,
+      "question": "Où se situe votre problème ?",
+      "options": [
+        { "id": "wc", "label": "WC" },
+        { "id": "sink", "label": "Lavabo / évier" },
+        { "id": "shower", "label": "Douche / baignoire" },
+        {
+          "id": "general_building_column",
+          "label": "Colonne générale d'immeuble"
+        },
+        { "id": "piping", "label": "Tuyauterie / canalisation" },
+        {
+          "id": "washing_machine",
+          "label": "Tuyau machine à laver / lave-vaisselle"
+        },
+        {
+          "id": "boiler",
+          "label": "Chaudière / chauffe-eau / ballon d'eau chaude"
+        }
+      ],
+      "next": {
+        "wc": 8,
+        "sink": 9,
+        "shower": 10,
+        "general_building_column": 11,
+        "piping": 12,
+        "washing_machine": 13,
+        "boiler": 14
+      }
+    },
+    {
+      "id": 8,
+      "question": "Quelle est la nature de votre problème ?",
+      "options": [
+        { "id": "congestion", "label": "Engorgement (WC bouchés)" },
+        { "id": "leak", "label": "Fuite (recherche de fuite)" },
+        {
+          "id": "operating_problem",
+          "label": "Problème de fonctionnement (cuvette...)"
+        },
+        { "id": "change", "label": "Changement de WC" }
+      ],
+      "next": {
+        "congestion": 15,
+        "leak": 16,
+        "operating_problem": 17,
+        "change": 18
+      }
+    },
+    {
+      "id": 15,
+      "question": "Votre WC possède t-il un sanibroyeur ?",
+      "options": [
+        { "id": "yes", "label": "Oui" },
+        { "id": "no", "label": "Non" }
+      ],
+      "next": {
+        "yes": 19,
+        "no": "D1"
+      }
     }
-  },
-  {
-    "id": 8,
-    "question": "Quelle est la nature de votre problème ?",
-    "options": [
-      { "id": "congestion", "label": "Engorgement (WC bouchés)" },
-      { "id": "leak", "label": "Fuite (recherche de fuite)" },
-      {
-        "id": "operating_problem",
-        "label": "Problème de fonctionnement (cuvette...)"
-      },
-      { "id": "change", "label": "Changement de WC" }
-    ],
-    "next": {
-      "congestion": 15,
-      "leak": 16,
-      "operating_problem": 17,
-      "change": 18
+  ],
+  "diagnostics": [
+    {
+      "id": "D1",
+      "title": "Réparation d’une fuite de la vanne principale ou avant la vanne",
+      "description": "Vous faites face à des WC bouchés qui ne se vident plus correctement ? Vous vous interrogez sur les raisons de ce blocage et les solutions pour y remédier ? Faites appel à un plombier de MesDépanneurs.fr pour un débouchage efficace et rapide de vos toilettes !\n\nInformations utiles pour le cas \"Débouchage de WC\"\nLe coût du débouchage de WC sans sanibroyeur dépend de l'ampleur de l'engorgement de vos toilettes et de la complexité à éliminer le bouchon. Le cas \"Débouchage de WC\" comprend les prestations suivantes : \n\n- Les frais de déplacement et de main-d'œuvre, \n\n- La fourniture du matériel (pompe manuelle, acides, furet électrique, etc) \n\n- Le débouchage des WC, \n\n- Le nettoyage du chantier. \n\nDans les cas les plus complexes, où le dégorgement dure plus de deux heures, le coût total pourrait excéder le devis initial (si l'usage d'un furet électrique sur différents niveaux est requis par exemple).\n\nNéanmoins, sachez que le plombier vous préviendra en amont de toute modification des frais si cette situation se produit.",
+      "price": "Entre 150€ et 300€ TTC",
+      "includes": [
+        "Gros matériel",
+        "Déplacement",
+        "Petites fournitures",
+        "Nettoyage du chantier",
+        "Main d'oeuvre"
+      ]
     }
-  },
-  {
-    "id": 15,
-    "question": "Votre WC possède t-il un sanibroyeur ?",
-    "options": [
-      { "id": "yes", "label": "Oui" },
-      { "id": "no", "label": "Non" }
-    ],
-    "next": {
-      "yes": 19,
-      "no": 20
-    }
-  }
-]
+  ]
+}
