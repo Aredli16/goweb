@@ -4,8 +4,34 @@ import type { Diagnostic, ISession } from "common";
 import Input from "./Input.tsx";
 import Button from "./Button.tsx";
 import Checkbox from "./Checkbox.tsx";
-import type { Dispatch, FormEvent, SetStateAction } from "react";
+import {
+  type ChangeEvent,
+  type Dispatch,
+  type FormEvent,
+  type SetStateAction,
+  useState,
+} from "react";
 import PreviousButton from "./PreviousButton.tsx";
+import { z } from "zod";
+
+const submissionSchema = z.object({
+  firstName: z.string().min(1, "Ce champ est requis"),
+  lastName: z.string().min(1, "Ce champ est requis"),
+  streetAddress: z.string().min(1, "Ce champ est requis"),
+  postalCode: z
+    .string()
+    .regex(/^\d{5}$/, "Le code postal doit comporter 5 chiffres"),
+  phoneNumber: z
+    .string()
+    .regex(/^\d{10}$/, "Le numéro de téléphone doit comporter 10 chiffres"),
+  email: z.email("L'adresse email n'est pas valide"),
+  paymentMethod: z.enum(["onsite", "online"], {
+    error: () => ({
+      message: "Veuillez choisir un mode de paiement valide",
+      path: ["paymentMethod"],
+    }),
+  }),
+});
 
 export default function SubmissionForm({
   diagnostic,
@@ -24,26 +50,45 @@ export default function SubmissionForm({
   ) => Promise<ISession | void>;
   setShowForm: Dispatch<SetStateAction<boolean>>;
 }) {
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.name;
+    setErrors((prevErrors) => {
+      const newErrors = { ...prevErrors };
+      delete newErrors[name];
+      return newErrors;
+    });
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const firstName = formData.get("firstName") as string;
-    const lastName = formData.get("lastName") as string;
-    const streetAddress = formData.get("streetAddress") as string;
-    const postalCode = formData.get("postalCode") as string;
-    const phoneNumber = formData.get("phoneNumber") as string;
-    const email = formData.get("email") as string;
-    const paymentMethod = formData.get("paymentMethod") as string;
+    const values = Object.fromEntries(formData.entries());
+    const result = submissionSchema.safeParse(values);
+
+    if (!result.success) {
+      result.error.issues.forEach((issue) => {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [issue.path[0]]: issue.message,
+        }));
+      });
+
+      return;
+    }
+
+    setErrors({});
 
     const session = await submitSession(
-      firstName,
-      lastName,
-      streetAddress,
-      postalCode,
-      phoneNumber,
-      email,
-      paymentMethod,
+      result.data.firstName,
+      result.data.lastName,
+      result.data.streetAddress,
+      result.data.postalCode,
+      result.data.phoneNumber,
+      result.data.email,
+      result.data.paymentMethod,
     );
 
     if (session && session.isSubmitted) {
@@ -69,12 +114,48 @@ export default function SubmissionForm({
             </h3>
 
             <div className="mt-5 grid grid-cols-2 gap-x-5 gap-y-10">
-              <Input name="firstName">Prénom</Input>
-              <Input name="lastName">Nom</Input>
-              <Input name="streetAddress">Adresse (numéro et voie)</Input>
-              <Input name="postalCode">Code postal</Input>
-              <Input name="phoneNumber">Téléphone</Input>
-              <Input name="email">Adresse email</Input>
+              <Input
+                name="firstName"
+                error={errors.firstName}
+                onChange={handleInputChange}
+              >
+                Prénom
+              </Input>
+              <Input
+                name="lastName"
+                error={errors.lastName}
+                onChange={handleInputChange}
+              >
+                Nom
+              </Input>
+              <Input
+                name="streetAddress"
+                error={errors.streetAddress}
+                onChange={handleInputChange}
+              >
+                Adresse (numéro et voie)
+              </Input>
+              <Input
+                name="postalCode"
+                error={errors.postalCode}
+                onChange={handleInputChange}
+              >
+                Code postal
+              </Input>
+              <Input
+                name="phoneNumber"
+                error={errors.phoneNumber}
+                onChange={handleInputChange}
+              >
+                Téléphone
+              </Input>
+              <Input
+                name="email"
+                error={errors.email}
+                onChange={handleInputChange}
+              >
+                Adresse email
+              </Input>
             </div>
 
             <h3 className="text-2xl font-bold text-gray-700 mt-10">
@@ -94,7 +175,6 @@ export default function SubmissionForm({
                   className="appearance-none w-5 h-5 border-2 border-gray-400 rounded-md cursor-pointer checked:border-primary checked:bg-primary transition-all"
                 />
               </label>
-
               <label className="flex justify-between items-center bg-gray-100 px-6 py-4 rounded-xl cursor-pointer">
                 <span className="font-semibold text-gray-800">
                   Payer en ligne
@@ -106,10 +186,15 @@ export default function SubmissionForm({
                   className="appearance-none w-5 h-5 border-2 border-gray-400 rounded-md cursor-pointer checked:border-primary checked:bg-primary transition-all"
                 />
               </label>
+              {errors.paymentMethod && (
+                <p className="mt-1 text-xs font-semibold text-red-400">
+                  {errors.paymentMethod}
+                </p>
+              )}
             </div>
 
             <div className="mt-10 space-y-4">
-              <Checkbox>
+              <Checkbox required>
                 <span>
                   J’accepte les{" "}
                   <a href="#" className="text-blue-600 hover:underline">
@@ -118,7 +203,7 @@ export default function SubmissionForm({
                 </span>
               </Checkbox>
 
-              <Checkbox>
+              <Checkbox required>
                 <span>
                   J’ai bien pris connaissance des{" "}
                   <a href="#" className="text-blue-600 hover:underline">
