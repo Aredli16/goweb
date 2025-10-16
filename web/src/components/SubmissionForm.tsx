@@ -4,11 +4,13 @@ import type { Diagnostic, ISession } from "common";
 import Input from "./Input.tsx";
 import Button from "./Button.tsx";
 import Checkbox from "./Checkbox.tsx";
-import type { FormEvent } from "react";
+import type { Dispatch, FormEvent, SetStateAction } from "react";
+import PreviousButton from "./PreviousButton.tsx";
 
 export default function SubmissionForm({
   diagnostic,
   submitSession,
+  setShowForm,
 }: {
   diagnostic: Diagnostic;
   submitSession: (
@@ -20,6 +22,7 @@ export default function SubmissionForm({
     email: string,
     paymentMethod: string,
   ) => Promise<ISession | void>;
+  setShowForm: Dispatch<SetStateAction<boolean>>;
 }) {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -130,7 +133,14 @@ export default function SubmissionForm({
               </Checkbox>
             </div>
 
-            <Button>Valider ma commande</Button>
+            <div className="flex items-center gap-x-3">
+              <PreviousButton
+                goPrev={() => {
+                  setShowForm(false);
+                }}
+              />
+              <Button>Valider ma commande</Button>
+            </div>
           </form>
           <div className="ml-10 flex-2">
             <div className="bg-secondary rounded-xl shadow-xl p-10 mx-auto">

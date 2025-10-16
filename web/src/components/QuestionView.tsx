@@ -1,8 +1,4 @@
-import {
-  ArrowLeftCircleIcon,
-  ArrowRightCircleIcon,
-  CheckIcon,
-} from "@heroicons/react/20/solid";
+import { ArrowRightCircleIcon, CheckIcon } from "@heroicons/react/20/solid";
 import plumbing from "../assets/plumbing.svg";
 import electricity from "../assets/electricity.svg";
 import glazing from "../assets/glazing.svg";
@@ -10,6 +6,7 @@ import heating from "../assets/heating.svg";
 import household_appliances from "../assets/household_appliances.svg";
 import locksmith from "../assets/locksmith.svg";
 import type { Question } from "common";
+import PreviousButton from "./PreviousButton.tsx";
 
 const iconMap: Record<string, string> = {
   plumbing: plumbing,
@@ -28,8 +25,8 @@ export default function QuestionView({
 }: {
   isFirst: boolean;
   currentQuestion: Question;
-  goNext: (id: string) => void;
-  goPrev: () => void;
+  goNext: (id: string) => Promise<void>;
+  goPrev: () => Promise<void>;
 }) {
   // Si c'est la 1ᵉ question, on affiche des icônes pour la séléction du type d'intervention
   if (isFirst) {
@@ -76,15 +73,7 @@ export default function QuestionView({
           ))}
         </div>
 
-        <div className="inline-block mt-5 border border-primary rounded-4xl px-5">
-          <button
-            className="w-full py-3 text-center text-primary font-semibold cursor-pointer inline-flex items-center justify-center"
-            onClick={goPrev}
-          >
-            <ArrowLeftCircleIcon className="w-5 h-5 mr-2" />
-            Etape précédente
-          </button>
-        </div>
+        <PreviousButton goPrev={goPrev} />
       </div>
       <div className="mt-10 bg-green-100 rounded-xl p-10 max-w-7xl mx-auto space-y-2">
         <p className="flex items-center justify-center">

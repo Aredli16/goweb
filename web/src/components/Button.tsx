@@ -9,7 +9,7 @@ export default function Button({
 }) {
   return (
     <button
-      className="mt-5 bg-primary text-white py-5 px-7 rounded-full font-semibold cursor-pointer"
+      className="mt-5 bg-primary text-white py-3 px-7 rounded-full font-semibold cursor-pointer"
       onClick={onClick}
     >
       {children}

@@ -22,7 +22,11 @@ function App() {
   // Cas 1 : Diagnostic final
   if (diagnostic)
     return (
-      <DiagnosticView diagnostic={diagnostic} submitSession={submitSession} />
+      <DiagnosticView
+        diagnostic={diagnostic}
+        submitSession={submitSession}
+        goPrev={goPrev}
+      />
     );
 
   // Cas 2 : Affichage des questions

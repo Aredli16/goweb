@@ -4,10 +4,12 @@ import type { Diagnostic, ISession } from "common";
 import { useState } from "react";
 import SubmissionForm from "./SubmissionForm.tsx";
 import Button from "./Button.tsx";
+import PreviousButton from "./PreviousButton.tsx";
 
 export default function DiagnosticView({
   diagnostic,
   submitSession,
+  goPrev,
 }: {
   diagnostic: Diagnostic;
   submitSession: (
@@ -19,12 +21,17 @@ export default function DiagnosticView({
     email: string,
     paymentMethod: string,
   ) => Promise<ISession | void>;
+  goPrev: () => Promise<void>;
 }) {
   const [showForm, setShowForm] = useState(false);
 
   if (showForm)
     return (
-      <SubmissionForm diagnostic={diagnostic} submitSession={submitSession} />
+      <SubmissionForm
+        diagnostic={diagnostic}
+        submitSession={submitSession}
+        setShowForm={setShowForm}
+      />
     );
 
   return (
@@ -43,6 +50,8 @@ export default function DiagnosticView({
             <p className="text-gray-700 whitespace-pre-line">
               {diagnostic.description}
             </p>
+
+            <PreviousButton goPrev={goPrev} />
           </div>
           <div className="ml-10 flex-2">
             <div className="bg-secondary rounded-xl shadow-xl p-10 mx-auto">
