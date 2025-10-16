@@ -1,0 +1,50 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Install common dependencies
+        run: npm install
+        working-directory: ./common
+      - name: Install backend dependencies
+        run: npm install
+        working-directory: ./server
+      - name: Install frontend dependencies
+        run: npm install
+        working-directory: ./web
+      - name: Build common types
+        run: npm run build
+        working-directory: ./common
+      - name: Lint backend code
+        run: npm run lint
+        working-directory: ./server
+      - name: Lint frontend code
+        run: npm run lint
+        working-directory: ./web
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Install common dependencies
+        run: npm install
+        working-directory: ./common
+      - name: Install backend dependencies
+        run: npm install
+        working-directory: ./server
+      - name: Test backend code
+        run: npm run test
+        working-directory: ./server
