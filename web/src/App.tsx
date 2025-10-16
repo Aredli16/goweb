@@ -39,7 +39,7 @@ function App() {
       <div
         className={clsx(
           isFirstQuestion ? "bg-landing" : "bg-background",
-          "h-screen",
+          "min-h-screen",
         )}
       >
         <h1

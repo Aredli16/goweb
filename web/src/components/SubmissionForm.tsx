@@ -102,10 +102,10 @@ export default function SubmissionForm({
   return (
     <>
       <Header />
-      <div className="bg-background h-screen flex flex-col items-center">
-        <div className="mt-10 flex max-w-7xl">
+      <div className="bg-background min-h-screen flex flex-col items-center">
+        <div className="mt-10 flex flex-col sm:flex-row max-w-7xl">
           <form
-            className="flex-3 bg-white rounded-xl shadow-xl p-10 mx-auto space-y-7"
+            className="flex-3 sm:order-1 order-2 bg-white rounded-xl shadow-xl p-10 mx-auto space-y-7"
             onSubmit={handleSubmit}
           >
             <h3 className="text-2xl font-bold text-gray-700">
@@ -113,7 +113,7 @@ export default function SubmissionForm({
               Informations
             </h3>
 
-            <div className="mt-5 grid grid-cols-2 gap-x-5 gap-y-10">
+            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-10">
               <Input
                 name="firstName"
                 error={errors.firstName}
@@ -218,7 +218,7 @@ export default function SubmissionForm({
               </Checkbox>
             </div>
 
-            <div className="flex items-center gap-x-3">
+            <div className="sm:flex items-center gap-x-3">
               <PreviousButton
                 goPrev={() => {
                   setShowForm(false);
@@ -227,7 +227,7 @@ export default function SubmissionForm({
               <Button>Valider ma commande</Button>
             </div>
           </form>
-          <div className="ml-10 flex-2">
+          <div className="sm:ml-10 mb-10 flex-2 sm:order-2 order-1">
             <div className="bg-secondary rounded-xl shadow-xl p-10 mx-auto">
               <h2 className="text-2xl font-bold text-primary">
                 {diagnostic.title}

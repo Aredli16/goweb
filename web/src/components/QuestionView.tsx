@@ -32,7 +32,7 @@ export default function QuestionView({
   if (isFirst) {
     return (
       <div className="flex justify-center items-center mt-10">
-        <div className="inline-grid grid-cols-3 justify-items-center gap-5">
+        <div className="inline-grid grid-cols-1 sm:grid-cols-3 justify-items-center gap-5">
           {currentQuestion.options.map((option) => (
             <div
               key={option.id}
@@ -59,7 +59,7 @@ export default function QuestionView({
     <>
       {/* On est dans le cas où on a choisi un type d'intervention, on affiche les options de la question suivante. */}
       <div className="mt-10 bg-white rounded-xl shadow-xl p-10 max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 justify-items-center gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 justify-items-center gap-5">
           {currentQuestion?.options.map((option) => (
             <button
               key={option.id}

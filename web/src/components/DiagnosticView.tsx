@@ -38,9 +38,9 @@ export default function DiagnosticView({
     <>
       <Header />
 
-      <div className="bg-background h-screen flex flex-col items-center">
-        <div className="mt-10 flex max-w-7xl">
-          <div className="flex-3 bg-white rounded-xl shadow-xl p-10 mx-auto space-y-7">
+      <div className="bg-background min-h-screen flex flex-col items-center">
+        <div className="mt-10 flex flex-col sm:flex-row max-w-7xl">
+          <div className="flex-3 order-2 sm:order-1 bg-white rounded-xl shadow-xl p-10 mx-auto space-y-7">
             <img
               src="https://solutions-horizon.com/wp-content/uploads/2019/08/diagnostic-entreprise-1030x579.jpg"
               className="w-full h-96 object-cover rounded-xl"
@@ -53,7 +53,7 @@ export default function DiagnosticView({
 
             <PreviousButton goPrev={goPrev} />
           </div>
-          <div className="ml-10 flex-2">
+          <div className="sm:ml-10 mb-10 flex-2 order-1 sm:order-2">
             <div className="bg-secondary rounded-xl shadow-xl p-10 mx-auto">
               <h2 className="text-2xl font-bold text-primary">
                 {diagnostic.title}
