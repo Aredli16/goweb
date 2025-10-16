@@ -14,7 +14,8 @@ describe("Question Service", () => {
   test("getNextQuestion() should return the next question when valid input", () => {
     const next = getNextQuestion(1, "plumbing");
     expect(next).toBeDefined();
-    expect(next?.id).toBe(2);
+    expect(next?.type).toBe("question");
+    expect(next?.data.id).toBe(2);
   });
 
   test("getNextQuestion() should return null when invalid id", () => {
